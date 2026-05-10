@@ -1,0 +1,75 @@
+<section class="page-header">
+  <div class="page-header-inner reveal">
+    <span class="eyebrow"><%= t('menu.subtitle') %></span>
+    <h1 class="page-title"><%= t('menu.title') %></h1>
+  </div>
+</section>
+
+<section class="menu-page">
+  <!-- Sticky category nav -->
+  <nav class="menu-categories" aria-label="Catégories">
+    <% menu.forEach(function(cat) { %>
+      <a href="#cat-<%= cat.slug %>" class="menu-category-link" data-cat-link="<%= cat.slug %>">
+        <%= tr({ fr: cat.name_fr, en: cat.name_en, it: cat.name_it }) %>
+      </a>
+    <% }) %>
+  </nav>
+
+  <div class="menu-sections">
+    <% menu.forEach(function(cat, catIdx) { %>
+      <% if (cat.items.length) { %>
+        <section class="menu-section" id="cat-<%= cat.slug %>" data-cat="<%= cat.slug %>">
+          <header class="menu-section-header reveal">
+            <h2 class="menu-section-title">
+              <%= tr({ fr: cat.name_fr, en: cat.name_en, it: cat.name_it }) %>
+            </h2>
+            <% var catDesc = tr({ fr: cat.description_fr, en: cat.description_en, it: cat.description_it }); %>
+            <% if (catDesc) { %>
+              <p class="menu-section-desc"><%= catDesc %></p>
+            <% } %>
+          </header>
+
+          <div class="menu-items">
+            <% cat.items.forEach(function(item, idx) { %>
+              <article class="menu-item reveal" style="--delay: <%= (idx % 4) * 0.05 %>s">
+                <% if (item.image_path) { %>
+                  <div class="menu-item-image">
+                    <img src="<%= item.image_path %>" alt="<%= tr({ fr: item.name_fr, en: item.name_en, it: item.name_it }) %>" loading="lazy" />
+                  </div>
+                <% } %>
+                <div class="menu-item-body">
+                  <div class="menu-item-head">
+                    <h3 class="menu-item-name">
+                      <%= tr({ fr: item.name_fr, en: item.name_en, it: item.name_it }) %>
+                      <% if (item.is_veggie) { %>
+                        <span class="badge-veggie-inline" title="<%= t('menu.veggie') %>">🌱</span>
+                      <% } %>
+                      <% if (item.is_featured) { %>
+                        <span class="badge-featured" title="<%= t('menu.featured') %>">★</span>
+                      <% } %>
+                    </h3>
+                    <span class="menu-item-dots" aria-hidden="true"></span>
+                    <span class="menu-item-price"><%= item.price %></span>
+                  </div>
+                  <% var desc = tr({ fr: item.description_fr, en: item.description_en, it: item.description_it }); %>
+                  <% if (desc) { %>
+                    <p class="menu-item-desc"><%= desc %></p>
+                  <% } %>
+                </div>
+              </article>
+            <% }) %>
+          </div>
+        </section>
+      <% } %>
+    <% }) %>
+  </div>
+
+  <div class="menu-page-cta reveal">
+    <% if (settings.social_ubereats) { %>
+      <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        <%= t('hero.cta_order') %>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+    <% } %>
+  </div>
+</section>

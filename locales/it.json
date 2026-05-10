@@ -1,0 +1,78 @@
+{
+  "lang": {
+    "code": "it",
+    "label": "Italiano"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menù",
+    "about": "La nostra storia",
+    "gallery": "Galleria",
+    "reviews": "Recensioni",
+    "contact": "Contatti",
+    "order": "Ordina"
+  },
+  "hero": {
+    "subtitle": "Smash burger · Tacos · Specialità provenzale",
+    "cta_menu": "Vedi il menù",
+    "cta_order": "Ordina su Uber Eats",
+    "rating_label": "{stars}/5 · {count} recensioni Google"
+  },
+  "about": {
+    "title": "Il gusto del fatto in casa",
+    "subtitle": "La nostra filosofia"
+  },
+  "menu": {
+    "title": "Il menù",
+    "subtitle": "Tutto è preparato in casa, con prodotti freschi e locali",
+    "veggie": "Veggie",
+    "featured": "Preferito",
+    "from": "da"
+  },
+  "gallery": {
+    "title": "Galleria",
+    "subtitle": "Uno sguardo al locale"
+  },
+  "reviews": {
+    "title": "Dicono di noi",
+    "subtitle": "{rating}/5 su Google · {count} recensioni",
+    "see_all": "Vedi tutte le recensioni"
+  },
+  "contact": {
+    "title": "Dove trovarci",
+    "subtitle": "Vi aspettiamo",
+    "address": "Indirizzo",
+    "phone": "Telefono",
+    "email": "Email",
+    "hours": "Orari",
+    "open_now": "Aperto ora",
+    "closed_now": "Chiuso",
+    "lunch": "Pranzo",
+    "dinner": "Cena",
+    "closed": "Chiuso",
+    "follow_us": "Seguici",
+    "directions": "Indicazioni",
+    "call": "Chiama",
+    "send_email": "Manda una email"
+  },
+  "footer": {
+    "tagline": "Smash burger gourmet · Villeneuve-lès-Avignon",
+    "made_with": "Creato con passione",
+    "legal": "Note legali",
+    "rights": "Tutti i diritti riservati"
+  },
+  "admin": {
+    "login": "Accesso",
+    "username": "Utente",
+    "password": "Password",
+    "submit": "Accedi",
+    "logout": "Esci",
+    "dashboard": "Dashboard",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "add": "Aggiungi",
+    "saved": "Modifiche salvate"
+  }
+}

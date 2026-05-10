@@ -1,0 +1,37 @@
+<header class="site-header" data-header>
+  <div class="site-header-inner">
+    <a href="/" class="site-brand" aria-label="Street Food Vla — Accueil">
+      <img src="/images/logo.jpg" alt="" class="site-brand-mark" />
+      <span class="site-brand-text">
+        <strong>Street Food</strong>
+        <em>Villeneuve-lès-Avignon</em>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/" class="site-nav-link <%= page === 'home' ? 'is-active' : '' %>"><%= t('nav.home') %></a>
+      <a href="/menu" class="site-nav-link <%= page === 'menu' ? 'is-active' : '' %>"><%= t('nav.menu') %></a>
+      <a href="/galerie" class="site-nav-link <%= page === 'gallery' ? 'is-active' : '' %>"><%= t('nav.gallery') %></a>
+      <a href="/avis" class="site-nav-link <%= page === 'reviews' ? 'is-active' : '' %>"><%= t('nav.reviews') %></a>
+      <a href="/contact" class="site-nav-link <%= page === 'contact' ? 'is-active' : '' %>"><%= t('nav.contact') %></a>
+    </nav>
+
+    <div class="site-header-tools">
+      <div class="lang-switcher" aria-label="Choisir la langue">
+        <% SUPPORTED_LANGS.forEach(function(code) { %>
+          <a href="/lang/<%= code %>" class="lang-switcher-link <%= lang === code ? 'is-active' : '' %>" aria-current="<%= lang === code ? 'true' : 'false' %>"><%= code.toUpperCase() %></a>
+        <% }) %>
+      </div>
+
+      <% if (settings && settings.social_ubereats) { %>
+        <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="btn-order-header">
+          <%= t('nav.order') %>
+        </a>
+      <% } %>
+
+      <button class="site-burger" aria-label="Menu" aria-expanded="false" aria-controls="site-drawer" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

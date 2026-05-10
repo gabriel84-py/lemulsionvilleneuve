@@ -1,0 +1,34 @@
+<header class="admin-page-header">
+  <h1 class="admin-h1">Mon compte</h1>
+  <p class="admin-lede">Connecté en tant que <strong><%= adminUser.username %></strong>.</p>
+</header>
+
+<% if (flash) { %><div class="admin-flash"><%= flash %></div><% } %>
+<% if (error) { %><div class="admin-flash admin-flash-error"><%= error %></div><% } %>
+
+<section class="admin-section admin-section-narrow">
+  <h2 class="admin-h2">Changer mon mot de passe</h2>
+
+  <form action="/admin/account" method="post" class="admin-form" autocomplete="off">
+    <%- include('../partials/_csrf') %>
+    <label class="admin-field">
+      <span>Mot de passe actuel *</span>
+      <input type="password" name="current_password" required autocomplete="current-password" />
+    </label>
+
+    <label class="admin-field">
+      <span>Nouveau mot de passe *</span>
+      <input type="password" name="new_password" required minlength="10" autocomplete="new-password" />
+      <small>Minimum 10 caractères. Préférez une phrase de passe longue plutôt qu'un mot complexe.</small>
+    </label>
+
+    <label class="admin-field">
+      <span>Confirmer le nouveau mot de passe *</span>
+      <input type="password" name="confirm_password" required minlength="10" autocomplete="new-password" />
+    </label>
+
+    <div class="admin-form-actions">
+      <button type="submit" class="admin-btn admin-btn-primary">Changer le mot de passe</button>
+    </div>
+  </form>
+</section>

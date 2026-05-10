@@ -1,0 +1,35 @@
+<header class="admin-page-header">
+  <h1 class="admin-h1">Historique d'activité</h1>
+  <p class="admin-lede">Les 200 dernières actions effectuées sur l'administration.</p>
+</header>
+
+<% if (logs.length) { %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Utilisateur</th>
+        <th>Action</th>
+        <th>Élément</th>
+        <th>ID</th>
+        <th>IP</th>
+        <th>Détails</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% logs.forEach(function(log) { %>
+        <tr>
+          <td><time><%= new Date(log.created_at + 'Z').toLocaleString('fr-FR') %></time></td>
+          <td><%= log.admin_username || '—' %></td>
+          <td><span class="admin-log-action admin-log-action--<%= log.action %>"><%= log.action %></span></td>
+          <td><%= log.entity %></td>
+          <td><%= log.entity_id || '' %></td>
+          <td class="admin-mono"><%= log.ip_address || '' %></td>
+          <td class="admin-mono admin-log-details"><%= log.details || '' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="admin-empty">Aucune activité enregistrée.</p>
+<% } %>

@@ -1,0 +1,101 @@
+<header class="admin-page-header">
+  <div>
+    <h1 class="admin-h1">Avis clients</h1>
+    <p class="admin-lede">Ajoutez des verbatims d'avis Google ou autres sources. Ils seront affichés sur la page /avis et en preview sur la home.</p>
+  </div>
+</header>
+
+<% if (flash) { %><div class="admin-flash"><%= flash %></div><% } %>
+
+<section class="admin-section">
+  <h2 class="admin-h2">Ajouter un avis</h2>
+  <form action="/admin/reviews" method="post" class="admin-form">
+    <%- include('../partials/_csrf') %>
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Auteur *</span>
+        <input type="text" name="author" required placeholder="Marie D." />
+      </label>
+      <label class="admin-field">
+        <span>Source</span>
+        <input type="text" name="source" placeholder="Google" value="Google" />
+      </label>
+    </div>
+
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Note (1-5) *</span>
+        <input type="number" name="rating" min="1" max="5" value="5" required />
+      </label>
+      <label class="admin-field">
+        <span>Ordre d'affichage</span>
+        <input type="number" name="display_order" value="0" />
+      </label>
+    </div>
+
+    <label class="admin-field">
+      <span>Avis (FR) *</span>
+      <textarea name="content_fr" rows="3" required></textarea>
+    </label>
+    <label class="admin-field">
+      <span>Review (EN)</span>
+      <textarea name="content_en" rows="3"></textarea>
+    </label>
+    <label class="admin-field">
+      <span>Recensione (IT)</span>
+      <textarea name="content_it" rows="3"></textarea>
+    </label>
+
+    <div class="admin-form-actions">
+      <button type="submit" class="admin-btn admin-btn-primary">Ajouter l'avis</button>
+    </div>
+  </form>
+</section>
+
+<section class="admin-section">
+  <h2 class="admin-h2">Avis publiés (<%= reviews.length %>)</h2>
+
+  <% if (reviews.length) { %>
+    <div class="admin-reviews-list">
+      <% reviews.forEach(function(review) { %>
+        <details class="admin-details">
+          <summary>
+            <strong><%= review.author %></strong>
+            <span class="admin-stars" aria-hidden="true">
+              <% for (var i = 0; i < (review.rating || 5); i++) { %>★<% } %>
+            </span>
+            <% if (review.source) { %><span class="admin-tag"><%= review.source %></span><% } %>
+            <% if (!review.is_visible) { %><span class="admin-tag admin-tag-warn">masqué</span><% } %>
+          </summary>
+
+          <form action="/admin/reviews/<%= review.id %>" method="post" class="admin-form admin-form-inline">
+            <div class="admin-grid-2">
+              <label class="admin-field"><span>Auteur</span><input type="text" name="author" value="<%= review.author %>" required /></label>
+              <label class="admin-field"><span>Source</span><input type="text" name="source" value="<%= review.source || '' %>" /></label>
+            </div>
+            <div class="admin-grid-2">
+              <label class="admin-field"><span>Note</span><input type="number" name="rating" min="1" max="5" value="<%= review.rating %>" /></label>
+              <label class="admin-field"><span>Ordre</span><input type="number" name="display_order" value="<%= review.display_order %>" /></label>
+            </div>
+            <label class="admin-field"><span>FR</span><textarea name="content_fr" rows="3" required><%= review.content_fr %></textarea></label>
+            <label class="admin-field"><span>EN</span><textarea name="content_en" rows="3"><%= review.content_en || '' %></textarea></label>
+            <label class="admin-field"><span>IT</span><textarea name="content_it" rows="3"><%= review.content_it || '' %></textarea></label>
+            <label class="admin-field admin-checkbox">
+              <input type="checkbox" name="is_visible" <%= review.is_visible ? 'checked' : '' %> />
+              <span>Visible</span>
+            </label>
+            <div class="admin-form-actions">
+              <button type="submit" class="admin-btn admin-btn-primary admin-btn-sm">Enregistrer</button>
+            </div>
+          </form>
+
+          <form action="/admin/reviews/<%= review.id %>/delete" method="post" onsubmit="return confirm('Supprimer cet avis ?')" class="admin-cat-delete">
+            <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm">Supprimer</button>
+          </form>
+        </details>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="admin-empty">Aucun avis pour le moment.</p>
+  <% } %>
+</section>

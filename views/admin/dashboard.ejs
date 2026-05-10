@@ -1,0 +1,75 @@
+<header class="admin-page-header">
+  <div>
+    <h1 class="admin-h1">Tableau de bord</h1>
+    <p class="admin-lede">Bienvenue, <strong><%= adminUser.username %></strong>. Voici un aperçu de votre site.</p>
+  </div>
+  <a href="/" target="_blank" rel="noopener" class="admin-btn admin-btn-ghost">↗ Voir le site public</a>
+</header>
+
+<section class="admin-stats">
+  <div class="admin-stat">
+    <span class="admin-stat-label">Plats au menu</span>
+    <strong class="admin-stat-value"><%= stats.menuItems %></strong>
+    <a href="/admin/menu" class="admin-stat-link">Gérer →</a>
+  </div>
+  <div class="admin-stat">
+    <span class="admin-stat-label">Catégories</span>
+    <strong class="admin-stat-value"><%= stats.categories %></strong>
+    <a href="/admin/menu" class="admin-stat-link">Gérer →</a>
+  </div>
+  <div class="admin-stat">
+    <span class="admin-stat-label">Photos galerie</span>
+    <strong class="admin-stat-value"><%= stats.galleryPhotos %></strong>
+    <a href="/admin/gallery" class="admin-stat-link">Gérer →</a>
+  </div>
+  <div class="admin-stat">
+    <span class="admin-stat-label">Avis publiés</span>
+    <strong class="admin-stat-value"><%= stats.reviews %></strong>
+    <a href="/admin/reviews" class="admin-stat-link">Gérer →</a>
+  </div>
+</section>
+
+<section class="admin-quick-actions">
+  <h2 class="admin-h2">Actions rapides</h2>
+  <div class="admin-quick-grid">
+    <a href="/admin/menu/items/new" class="admin-quick-action">
+      <span>＋</span>
+      <strong>Ajouter un plat</strong>
+      <em>Nouveau burger, taco, accompagnement…</em>
+    </a>
+    <a href="/admin/gallery" class="admin-quick-action">
+      <span>📸</span>
+      <strong>Ajouter des photos</strong>
+      <em>Enrichir la galerie</em>
+    </a>
+    <a href="/admin/hours" class="admin-quick-action">
+      <span>⏱</span>
+      <strong>Modifier les horaires</strong>
+      <em>Fermetures exceptionnelles, congés…</em>
+    </a>
+    <a href="/admin/settings" class="admin-quick-action">
+      <span>📣</span>
+      <strong>Bandeau d'annonce</strong>
+      <em>Afficher un message en haut du site</em>
+    </a>
+  </div>
+</section>
+
+<section class="admin-recent">
+  <h2 class="admin-h2">Activité récente</h2>
+  <% if (recentLogs.length) { %>
+    <ul class="admin-log-list">
+      <% recentLogs.forEach(function(log) { %>
+        <li class="admin-log-row">
+          <span class="admin-log-action admin-log-action--<%= log.action %>"><%= log.action %></span>
+          <span class="admin-log-entity"><%= log.entity %></span>
+          <span class="admin-log-user"><%= log.admin_username %></span>
+          <time><%= new Date(log.created_at + 'Z').toLocaleString('fr-FR') %></time>
+        </li>
+      <% }) %>
+    </ul>
+    <a href="/admin/logs" class="admin-link">Voir tout l'historique →</a>
+  <% } else { %>
+    <p class="admin-empty">Aucune activité enregistrée pour le moment.</p>
+  <% } %>
+</section>

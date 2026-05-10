@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fffaf3" />
+
+  <title><%= settings && settings.restaurant_name ? settings.restaurant_name : 'Street Food Vla' %> · <%= t('hero.subtitle') %></title>
+
+  <meta name="description" content="<%= settings && settings.meta_description ? settings.meta_description : 'Smash burgers gourmets, tacos et spécialités provençales à Villeneuve-lès-Avignon. Viande Limousine française, fait maison.' %>" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= settings.restaurant_name || 'Street Food Vla' %>" />
+  <meta property="og:description" content="<%= t('hero.subtitle') %>" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:image" content="<%= publicUrl %>/images/logo.jpg" />
+  <meta property="og:locale" content="<%= lang === 'fr' ? 'fr_FR' : (lang === 'en' ? 'en_US' : 'it_IT') %>" />
+
+  <!-- Fonts: Bricolage Grotesque (display) + Fraunces (serif accent) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/public.css" />
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "<%= settings.restaurant_name || 'Street Food Vla' %>",
+    "image": "<%= publicUrl %>/images/logo.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "<%= settings.address_street || '' %>",
+      "addressLocality": "<%= settings.address_city || '' %>",
+      "postalCode": "<%= settings.address_postal || '' %>",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": <%= settings.geo_lat || 0 %>,
+      "longitude": <%= settings.geo_lng || 0 %>
+    },
+    "telephone": "<%= settings.phone || '' %>",
+    "email": "<%= settings.email || '' %>",
+    "priceRange": "€€",
+    "servesCuisine": ["Burger", "Tacos", "American", "French"]
+  }
+  </script>
+</head>
+<body data-page="<%= page %>">
+
+  <%- include('../partials/announcement-bar') %>
+  <%- include('../partials/header') %>
+  <%- include('../partials/mobile-drawer') %>
+
+  <main id="main">
+    <%- body %>
+  </main>
+
+  <%- include('../partials/footer') %>
+  <%- include('../partials/floating-order') %>
+
+  <script src="/js/public.js" defer></script>
+</body>
+</html>

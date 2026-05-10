@@ -1,0 +1,38 @@
+<div class="admin-login">
+  <div class="admin-login-card">
+    <div class="admin-login-header">
+      <img src="/images/logo.jpg" alt="" class="admin-login-logo" />
+      <h1>Street Food Vla</h1>
+      <p>Espace administration</p>
+    </div>
+
+    <form action="/admin/login" method="post" class="admin-login-form" autocomplete="off">
+      <%- include('../partials/_csrf') %>
+      <input type="hidden" name="next" value="<%= next %>" />
+
+      <% if (error) { %>
+        <div class="admin-login-error">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <label class="admin-field">
+        <span>Identifiant</span>
+        <input type="text" name="username" required autofocus autocapitalize="off" autocomplete="username" />
+      </label>
+
+      <label class="admin-field">
+        <span>Mot de passe</span>
+        <input type="password" name="password" required autocomplete="current-password" />
+      </label>
+
+      <button type="submit" class="admin-btn admin-btn-primary admin-btn-block">
+        Se connecter
+      </button>
+    </form>
+
+    <p class="admin-login-foot">
+      <a href="/">← Retour au site public</a>
+    </p>
+  </div>
+</div>

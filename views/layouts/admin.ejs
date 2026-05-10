@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Street Food Vla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="/images/logo.jpg" alt="" class="admin-brand-logo" />
+        <div class="admin-brand-text">
+          <strong>Street Food</strong>
+          <span>Administration</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="/admin" class="admin-nav-item <%= page === 'dashboard' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">◇</span> Tableau de bord
+        </a>
+        <a href="/admin/settings" class="admin-nav-item <%= page === 'settings' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">◯</span> Contenu général
+        </a>
+        <a href="/admin/menu" class="admin-nav-item <%= page === 'menu' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">▤</span> Carte & menu
+        </a>
+        <a href="/admin/hours" class="admin-nav-item <%= page === 'hours' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">⏱</span> Horaires
+        </a>
+        <a href="/admin/gallery" class="admin-nav-item <%= page === 'gallery' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">▢</span> Galerie photos
+        </a>
+        <a href="/admin/reviews" class="admin-nav-item <%= page === 'reviews' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">★</span> Avis clients
+        </a>
+        <a href="/admin/logs" class="admin-nav-item <%= page === 'logs' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">⌬</span> Historique
+        </a>
+        <a href="/admin/account" class="admin-nav-item <%= page === 'account' ? 'is-active' : '' %>">
+          <span class="admin-nav-icon">⌥</span> Mon compte
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" rel="noopener" class="admin-link-site">↗ Voir le site</a>
+        <form action="/admin/logout" method="post" class="admin-logout-form">
+          <button type="submit" class="admin-logout-btn">Déconnexion</button>
+        </form>
+        <p class="admin-user">Connecté : <strong><%= adminUser?.username %></strong></p>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <%- body %>
+    </main>
+  </div>
+
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>

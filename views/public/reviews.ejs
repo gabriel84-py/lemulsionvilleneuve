@@ -1,0 +1,41 @@
+<section class="page-header">
+  <div class="page-header-inner reveal">
+    <span class="eyebrow">★★★★★ <%= settings.rating_value || '4.8' %>/5</span>
+    <h1 class="page-title"><%= t('reviews.title') %></h1>
+    <p class="page-subtitle">
+      <%= t('reviews.subtitle', { rating: settings.rating_value || '4.8', count: settings.rating_count || '292' }) %>
+    </p>
+  </div>
+</section>
+
+<section class="reviews-page">
+  <% if (reviews && reviews.length) { %>
+    <div class="reviews-page-grid">
+      <% reviews.forEach(function(review, idx) { %>
+        <article class="review-card reveal" style="--delay: <%= (idx % 6) * 0.05 %>s">
+          <div class="review-card-stars" aria-hidden="true">
+            <% for (var i = 0; i < (review.rating || 5); i++) { %>★<% } %>
+          </div>
+          <p class="review-card-content">
+            « <%= tr({ fr: review.content_fr, en: review.content_en, it: review.content_it }) %> »
+          </p>
+          <div class="review-card-footer">
+            <strong><%= review.author %></strong>
+            <% if (review.source) { %><span><%= review.source %></span><% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty-state">Pas d'avis pour le moment.</p>
+  <% } %>
+
+  <% if (settings.social_google_maps) { %>
+    <div class="reviews-page-cta reveal">
+      <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="btn btn-outline">
+        <%= lang === 'en' ? 'See all on Google' : (lang === 'it' ? 'Vedi tutto su Google' : 'Voir tous les avis sur Google') %>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  <% } %>
+</section>

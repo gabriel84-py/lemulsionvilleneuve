@@ -1,0 +1,113 @@
+<section class="page-header">
+  <div class="page-header-inner reveal">
+    <span class="eyebrow"><%= t('contact.subtitle') %></span>
+    <h1 class="page-title"><%= t('contact.title') %></h1>
+  </div>
+</section>
+
+<section class="contact-page">
+  <div class="contact-page-grid">
+    <div class="contact-info reveal">
+      <div class="contact-info-block">
+        <h3><%= t('contact.address') %></h3>
+        <p>
+          <%= settings.address_street || '17 Avenue Gabriel Péri' %><br />
+          <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %>
+        </p>
+        <% if (settings.social_google_maps) { %>
+          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="contact-link">↗ <%= t('contact.directions') %></a>
+        <% } %>
+      </div>
+
+      <div class="contact-info-block">
+        <h3><%= t('contact.phone') %></h3>
+        <% if (settings.phone) { %>
+          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="contact-link contact-link-big">
+            <%= settings.phone %>
+          </a>
+        <% } %>
+      </div>
+
+      <div class="contact-info-block">
+        <h3><%= t('contact.email') %></h3>
+        <% if (settings.email) { %>
+          <a href="mailto:<%= settings.email %>" class="contact-link contact-link-big">
+            <%= settings.email %>
+          </a>
+        <% } %>
+      </div>
+
+      <div class="contact-info-block">
+        <h3><%= t('contact.hours') %></h3>
+        <div class="contact-status">
+          <% if (status.isOpen) { %>
+            <span class="status-dot is-open"></span>
+            <strong><%= t('contact.open_now') %></strong>
+          <% } else { %>
+            <span class="status-dot is-closed"></span>
+            <strong><%= t('contact.closed_now') %></strong>
+          <% } %>
+          <span class="contact-status-detail"><%= status.message %></span>
+        </div>
+
+        <table class="contact-hours-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= t('contact.lunch') %></th>
+              <th><%= t('contact.dinner') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hours.forEach(function(h) { %>
+              <tr>
+                <th><%= h.dayLabel %></th>
+                <td>
+                  <% if (h.lunch && !h.lunch.is_closed && h.lunch.opens) { %>
+                    <%= h.lunch.opens %>—<%= h.lunch.closes %>
+                  <% } else { %>
+                    <em><%= t('contact.closed') %></em>
+                  <% } %>
+                </td>
+                <td>
+                  <% if (h.dinner && !h.dinner.is_closed && h.dinner.opens) { %>
+                    <%= h.dinner.opens %>—<%= h.dinner.closes %>
+                  <% } else { %>
+                    <em><%= t('contact.closed') %></em>
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="contact-info-block">
+        <h3><%= t('contact.follow_us') %></h3>
+        <div class="contact-socials">
+          <% if (settings.social_instagram) { %>
+            <a href="<%= settings.social_instagram %>" target="_blank" rel="noopener" class="contact-social">Instagram</a>
+          <% } %>
+          <% if (settings.social_facebook) { %>
+            <a href="<%= settings.social_facebook %>" target="_blank" rel="noopener" class="contact-social">Facebook</a>
+          <% } %>
+          <% if (settings.social_ubereats) { %>
+            <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="contact-social">Uber Eats</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-map-wrap reveal">
+      <% if (settings.geo_lat && settings.geo_lng) { %>
+        <iframe
+          src="https://www.google.com/maps?q=<%= settings.geo_lat %>,<%= settings.geo_lng %>&hl=<%= lang %>&z=16&output=embed"
+          loading="lazy"
+          title="Carte du restaurant"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      <% } %>
+    </div>
+  </div>
+</section>

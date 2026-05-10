@@ -1,0 +1,31 @@
+<%
+  // Barre d'actions sticky en bas, mobile uniquement (cachée en CSS ≥720px).
+  // Affiche jusqu'à 3 actions selon ce qui est configuré : appeler, itinéraire, commander.
+  var phone = settings && settings.phone ? settings.phone : null;
+  var phoneTel = phone ? phone.replace(/\s/g, '') : null;
+  var maps = settings && settings.social_google_maps ? settings.social_google_maps : null;
+  var ubereats = settings && settings.social_ubereats ? settings.social_ubereats : null;
+  var hasAny = phoneTel || maps || ubereats;
+%>
+<% if (hasAny) { %>
+  <nav class="mobile-bottombar" data-mobile-bottombar aria-label="Actions rapides">
+    <% if (phoneTel) { %>
+      <a href="tel:<%= phoneTel %>" class="mobile-bottombar-btn" aria-label="<%= t('contact.call') %>">
+        <span class="mobile-bottombar-btn-icon" aria-hidden="true">📞</span>
+        <span class="mobile-bottombar-btn-label"><%= t('contact.call') %></span>
+      </a>
+    <% } %>
+    <% if (maps) { %>
+      <a href="<%= maps %>" target="_blank" rel="noopener" class="mobile-bottombar-btn" aria-label="<%= t('contact.directions') %>">
+        <span class="mobile-bottombar-btn-icon" aria-hidden="true">📍</span>
+        <span class="mobile-bottombar-btn-label"><%= t('contact.directions') %></span>
+      </a>
+    <% } %>
+    <% if (ubereats) { %>
+      <a href="<%= ubereats %>" target="_blank" rel="noopener" class="mobile-bottombar-btn is-primary" aria-label="<%= t('hero.cta_order') %>">
+        <span class="mobile-bottombar-btn-icon" aria-hidden="true">🛵</span>
+        <span class="mobile-bottombar-btn-label"><%= t('nav.order') %></span>
+      </a>
+    <% } %>
+  </nav>
+<% } %>

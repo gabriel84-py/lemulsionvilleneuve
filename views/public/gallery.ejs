@@ -1,0 +1,24 @@
+<section class="page-header">
+  <div class="page-header-inner reveal">
+    <span class="eyebrow"><%= t('gallery.subtitle') %></span>
+    <h1 class="page-title"><%= t('gallery.title') %></h1>
+  </div>
+</section>
+
+<section class="gallery-page">
+  <% if (gallery && gallery.length) { %>
+    <div class="gallery-page-grid">
+      <% gallery.forEach(function(photo, idx) { %>
+        <figure class="gallery-page-item reveal" style="--delay: <%= (idx % 6) * 0.05 %>s">
+          <img src="<%= photo.image_path %>" alt="<%= tr({ fr: photo.caption_fr, en: photo.caption_en, it: photo.caption_it }) || '' %>" loading="lazy" />
+          <% var cap = tr({ fr: photo.caption_fr, en: photo.caption_en, it: photo.caption_it }); %>
+          <% if (cap) { %>
+            <figcaption><%= cap %></figcaption>
+          <% } %>
+        </figure>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty-state">La galerie est en préparation.</p>
+  <% } %>
+</section>

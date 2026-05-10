@@ -1,0 +1,65 @@
+<header class="admin-page-header">
+  <div>
+    <h1 class="admin-h1">Galerie photos</h1>
+    <p class="admin-lede">Glissez-déposez les photos pour les réorganiser. Les changements d'ordre sont enregistrés automatiquement.</p>
+  </div>
+</header>
+
+<% if (flash) { %><div class="admin-flash"><%= flash %></div><% } %>
+
+<section class="admin-section">
+  <h2 class="admin-h2">Ajouter des photos</h2>
+  <form action="/admin/gallery" method="post" enctype="multipart/form-data" class="admin-form">
+    <%- include('../partials/_csrf') %>
+    <label class="admin-field">
+      <span>Photos (jusqu'à 12 à la fois)</span>
+      <input type="file" name="images" accept="image/*" multiple required />
+      <small>JPG, PNG ou WebP — max 8 MB par image. Conversion en WebP automatique.</small>
+    </label>
+    <div class="admin-form-actions">
+      <button type="submit" class="admin-btn admin-btn-primary">Importer</button>
+    </div>
+  </form>
+</section>
+
+<section class="admin-section">
+  <h2 class="admin-h2">Photos en ligne (<%= photos.length %>)</h2>
+
+  <% if (photos.length) { %>
+    <div class="admin-gallery-grid" data-gallery-sortable>
+      <% photos.forEach(function(photo) { %>
+        <div class="admin-gallery-item" draggable="true" data-id="<%= photo.id %>">
+          <div class="admin-gallery-img-wrap">
+            <img src="<%= photo.image_path %>" alt="" />
+            <% if (!photo.is_visible) { %>
+              <span class="admin-gallery-overlay">Masquée</span>
+            <% } %>
+          </div>
+
+          <details class="admin-gallery-details">
+            <summary>Modifier les légendes</summary>
+            <form action="/admin/gallery/<%= photo.id %>" method="post" class="admin-form admin-form-inline">
+              <%- include('../partials/_csrf') %>
+              <label class="admin-field"><span>FR</span><input type="text" name="caption_fr" value="<%= photo.caption_fr || '' %>" /></label>
+              <label class="admin-field"><span>EN</span><input type="text" name="caption_en" value="<%= photo.caption_en || '' %>" /></label>
+              <label class="admin-field"><span>IT</span><input type="text" name="caption_it" value="<%= photo.caption_it || '' %>" /></label>
+              <label class="admin-field"><span>Ordre</span><input type="number" name="display_order" value="<%= photo.display_order %>" /></label>
+              <label class="admin-field admin-checkbox">
+                <input type="checkbox" name="is_visible" <%= photo.is_visible ? 'checked' : '' %> />
+                <span>Visible</span>
+              </label>
+              <button type="submit" class="admin-btn admin-btn-primary admin-btn-sm">Enregistrer</button>
+            </form>
+          </details>
+
+          <form action="/admin/gallery/<%= photo.id %>/delete" method="post" onsubmit="return confirm('Supprimer cette photo ?')" class="admin-gallery-delete">
+            <%- include('../partials/_csrf') %>
+            <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm">Supprimer</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="admin-empty">Aucune photo dans la galerie pour le moment.</p>
+  <% } %>
+</section>

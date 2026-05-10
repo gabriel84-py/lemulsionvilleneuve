@@ -1,0 +1,72 @@
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <img src="/images/logo.jpg" alt="" class="site-footer-logo" />
+      <p class="site-footer-tagline"><%= t('footer.tagline') %></p>
+    </div>
+
+    <div class="site-footer-grid">
+      <div class="site-footer-col">
+        <h4 class="site-footer-title"><%= t('contact.address') %></h4>
+        <p>
+          <%= settings.address_street || '17 Avenue Gabriel Péri' %><br />
+          <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %>
+        </p>
+        <% if (settings.social_google_maps) { %>
+          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="site-footer-link">↗ <%= t('contact.directions') %></a>
+        <% } %>
+      </div>
+
+      <div class="site-footer-col">
+        <h4 class="site-footer-title"><%= t('contact.phone') %> & <%= t('contact.email') %></h4>
+        <% if (settings.phone) { %>
+          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="site-footer-link"><%= settings.phone %></a><br />
+        <% } %>
+        <% if (settings.email) { %>
+          <a href="mailto:<%= settings.email %>" class="site-footer-link"><%= settings.email %></a>
+        <% } %>
+      </div>
+
+      <div class="site-footer-col">
+        <h4 class="site-footer-title"><%= t('contact.follow_us') %></h4>
+        <div class="site-footer-socials">
+          <% if (settings.social_instagram) { %>
+            <a href="<%= settings.social_instagram %>" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+          <% } %>
+          <% if (settings.social_facebook) { %>
+            <a href="<%= settings.social_facebook %>" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+          <% } %>
+          <% if (settings.social_ubereats) { %>
+            <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" aria-label="Uber Eats">Uber Eats</a>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="site-footer-col">
+        <h4 class="site-footer-title"><%= t('contact.hours') %></h4>
+        <ul class="site-footer-hours">
+          <% hours.forEach(function(h) { %>
+            <li>
+              <span><%= h.dayLabel %></span>
+              <em>
+                <% if (h.lunch && !h.lunch.is_closed && h.lunch.opens) { %>
+                  <%= h.lunch.opens %>-<%= h.lunch.closes %><% } %><% if (h.lunch && !h.lunch.is_closed && h.dinner && !h.dinner.is_closed) { %> · <% } %><% if (h.dinner && !h.dinner.is_closed && h.dinner.opens) { %><%= h.dinner.opens %>-<%= h.dinner.closes %>
+                <% } %>
+                <% if ((!h.lunch || h.lunch.is_closed) && (!h.dinner || h.dinner.is_closed)) { %>—<% } %>
+              </em>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer-bottom">
+      <p>© <%= year %> <%= settings.restaurant_name || 'Street Food Vla' %> · <%= t('footer.rights') %></p>
+      <p>
+        <a href="/mentions-legales" class="site-footer-link"><%= t('footer.legal') %></a>
+        <span aria-hidden="true" class="site-footer-sep">·</span>
+        <a href="/admin" class="site-footer-link site-footer-admin" rel="nofollow">Admin</a>
+      </p>
+    </div>
+  </div>
+</footer>

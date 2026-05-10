@@ -1,0 +1,78 @@
+{
+  "lang": {
+    "code": "fr",
+    "label": "Français"
+  },
+  "nav": {
+    "home": "Accueil",
+    "menu": "Notre carte",
+    "about": "Notre histoire",
+    "gallery": "Galerie",
+    "reviews": "Avis",
+    "contact": "Contact",
+    "order": "Commander"
+  },
+  "hero": {
+    "subtitle": "Smash burgers · Tacos · Spécialité provençale",
+    "cta_menu": "Voir la carte",
+    "cta_order": "Commander sur Uber Eats",
+    "rating_label": "{stars}/5 · {count} avis Google"
+  },
+  "about": {
+    "title": "Le goût du fait maison",
+    "subtitle": "Notre philosophie"
+  },
+  "menu": {
+    "title": "La carte",
+    "subtitle": "Tout est préparé maison, avec des produits frais et locaux",
+    "veggie": "Végé",
+    "featured": "Coup de cœur",
+    "from": "à partir de"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Un aperçu de la maison"
+  },
+  "reviews": {
+    "title": "Ils en parlent",
+    "subtitle": "{rating}/5 sur Google · {count} avis",
+    "see_all": "Voir tous les avis"
+  },
+  "contact": {
+    "title": "Nous trouver",
+    "subtitle": "On vous attend",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "email": "Email",
+    "hours": "Horaires",
+    "open_now": "Ouvert maintenant",
+    "closed_now": "Fermé",
+    "lunch": "Midi",
+    "dinner": "Soir",
+    "closed": "Fermé",
+    "follow_us": "Suivez-nous",
+    "directions": "Itinéraire",
+    "call": "Appeler",
+    "send_email": "Envoyer un email"
+  },
+  "footer": {
+    "tagline": "Smash burgers gourmets · Villeneuve-lès-Avignon",
+    "made_with": "Conçu avec passion",
+    "legal": "Mentions légales",
+    "rights": "Tous droits réservés"
+  },
+  "admin": {
+    "login": "Connexion",
+    "username": "Identifiant",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "saved": "Modifications enregistrées"
+  }
+}

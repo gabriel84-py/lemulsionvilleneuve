@@ -1,0 +1,55 @@
+<header class="admin-page-header">
+  <h1 class="admin-h1">Horaires d'ouverture</h1>
+  <p class="admin-lede">Définissez les horaires de chaque service. Cochez "fermé" pour les services non assurés.</p>
+</header>
+
+<% if (flash) { %><div class="admin-flash"><%= flash %></div><% } %>
+
+<form action="/admin/hours" method="post" class="admin-form">
+  <%- include('../partials/_csrf') %>
+  <div class="admin-hours-grid">
+    <% hours.forEach(function(h) { %>
+      <div class="admin-hours-day">
+        <h3 class="admin-hours-day-title"><%= h.dayLabel %></h3>
+
+        <div class="admin-hours-services">
+          <!-- Lunch -->
+          <div class="admin-hours-service">
+            <div class="admin-hours-service-head">
+              <strong>Midi</strong>
+              <label class="admin-hours-closed-toggle">
+                <input type="checkbox" name="closed_<%= h.day %>_lunch" <%= (h.lunch && h.lunch.is_closed) || !h.lunch ? 'checked' : '' %> />
+                <span>Fermé</span>
+              </label>
+            </div>
+            <div class="admin-hours-service-times">
+              <input type="time" name="opens_<%= h.day %>_lunch" value="<%= h.lunch?.opens || '11:30' %>" />
+              <span>—</span>
+              <input type="time" name="closes_<%= h.day %>_lunch" value="<%= h.lunch?.closes || '14:30' %>" />
+            </div>
+          </div>
+
+          <!-- Dinner -->
+          <div class="admin-hours-service">
+            <div class="admin-hours-service-head">
+              <strong>Soir</strong>
+              <label class="admin-hours-closed-toggle">
+                <input type="checkbox" name="closed_<%= h.day %>_dinner" <%= (h.dinner && h.dinner.is_closed) || !h.dinner ? 'checked' : '' %> />
+                <span>Fermé</span>
+              </label>
+            </div>
+            <div class="admin-hours-service-times">
+              <input type="time" name="opens_<%= h.day %>_dinner" value="<%= h.dinner?.opens || '18:30' %>" />
+              <span>—</span>
+              <input type="time" name="closes_<%= h.day %>_dinner" value="<%= h.dinner?.closes || '22:30' %>" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="admin-form-actions">
+    <button type="submit" class="admin-btn admin-btn-primary">Enregistrer les horaires</button>
+  </div>
+</form>

@@ -1,0 +1,33 @@
+<section class="page-header">
+  <div class="page-header-inner reveal">
+    <h1 class="page-title"><%= t('footer.legal') %></h1>
+  </div>
+</section>
+
+<section class="legal-page">
+  <div class="legal-page-content reveal">
+    <h2>Éditeur du site</h2>
+    <p>
+      <strong><%= settings.restaurant_name || 'Street Food Vla' %></strong><br/>
+      <%= settings.address_street || '17 Avenue Gabriel Péri' %><br/>
+      <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %><br/>
+      <% if (settings.phone) { %>Téléphone : <%= settings.phone %><br/><% } %>
+      <% if (settings.email) { %>Email : <%= settings.email %><% } %>
+    </p>
+    <% if (settings.legal_siret) { %>
+      <p>SIRET : <%= settings.legal_siret %></p>
+    <% } %>
+
+    <h2>Hébergement</h2>
+    <p><%= settings.legal_host || 'À renseigner par l\'éditeur.' %></p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>L'ensemble des éléments présents sur ce site (textes, images, logo, contenus) est protégé par le droit d'auteur. Toute reproduction, totale ou partielle, est interdite sans autorisation écrite préalable.</p>
+
+    <h2>Données personnelles</h2>
+    <p>Ce site n'utilise aucun cookie de suivi ni de profilage. Un cookie technique est utilisé pour la session administrateur, et un cookie pour la préférence de langue. Aucune donnée personnelle n'est collectée auprès des visiteurs.</p>
+
+    <h2>Crédits</h2>
+    <p>Site conçu et développé sur mesure.</p>
+  </div>
+</section>

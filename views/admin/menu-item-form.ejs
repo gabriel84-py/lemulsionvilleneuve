@@ -1,0 +1,107 @@
+<header class="admin-page-header">
+  <div>
+    <h1 class="admin-h1"><%= item ? 'Modifier le plat' : 'Nouveau plat' %></h1>
+    <% if (item) { %><p class="admin-lede"><%= item.name_fr %></p><% } %>
+  </div>
+  <a href="/admin/menu" class="admin-btn admin-btn-ghost">← Retour à la carte</a>
+</header>
+
+<form action="<%= action %>" method="post" enctype="multipart/form-data" class="admin-form">
+  <%- include('../partials/_csrf') %>
+
+  <fieldset class="admin-fieldset">
+    <legend>Informations principales</legend>
+
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Catégorie *</span>
+        <select name="category_id" required>
+          <% categories.forEach(function(cat) { %>
+            <option value="<%= cat.id %>" <%= item && item.category_id === cat.id ? 'selected' : '' %>><%= cat.name_fr %></option>
+          <% }) %>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span>Prix *</span>
+        <input type="text" name="price" value="<%= item?.price || '' %>" required placeholder="9 € ou 8,90 €" />
+      </label>
+    </div>
+
+    <div class="admin-grid-3">
+      <label class="admin-field">
+        <span>Nom (FR) *</span>
+        <input type="text" name="name_fr" value="<%= item?.name_fr || '' %>" required />
+      </label>
+      <label class="admin-field">
+        <span>Name (EN)</span>
+        <input type="text" name="name_en" value="<%= item?.name_en || '' %>" />
+      </label>
+      <label class="admin-field">
+        <span>Nome (IT)</span>
+        <input type="text" name="name_it" value="<%= item?.name_it || '' %>" />
+      </label>
+    </div>
+
+    <div class="admin-grid-3">
+      <label class="admin-field">
+        <span>Description (FR)</span>
+        <textarea name="description_fr" rows="3"><%= item?.description_fr || '' %></textarea>
+      </label>
+      <label class="admin-field">
+        <span>Description (EN)</span>
+        <textarea name="description_en" rows="3"><%= item?.description_en || '' %></textarea>
+      </label>
+      <label class="admin-field">
+        <span>Descrizione (IT)</span>
+        <textarea name="description_it" rows="3"><%= item?.description_it || '' %></textarea>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset class="admin-fieldset">
+    <legend>Photo du plat</legend>
+    <% if (item && item.image_path) { %>
+      <div class="admin-image-preview">
+        <img src="<%= item.image_path %>" alt="" />
+        <label class="admin-checkbox">
+          <input type="checkbox" name="remove_image" />
+          <span>Supprimer la photo actuelle</span>
+        </label>
+      </div>
+    <% } %>
+    <label class="admin-field">
+      <span><%= item && item.image_path ? 'Remplacer la photo' : 'Ajouter une photo' %></span>
+      <input type="file" name="image" accept="image/*" />
+      <small>JPG, PNG ou WebP — max 8 MB. Conversion automatique en WebP optimisé.</small>
+    </label>
+  </fieldset>
+
+  <fieldset class="admin-fieldset">
+    <legend>Affichage</legend>
+    <label class="admin-field admin-checkbox">
+      <input type="checkbox" name="is_visible" <%= !item || item.is_visible ? 'checked' : '' %> />
+      <span>Visible sur le site public</span>
+    </label>
+    <label class="admin-field admin-checkbox">
+      <input type="checkbox" name="is_veggie" <%= item?.is_veggie ? 'checked' : '' %> />
+      <span>🌱 Végétarien</span>
+    </label>
+    <label class="admin-field admin-checkbox">
+      <input type="checkbox" name="is_featured" <%= item?.is_featured ? 'checked' : '' %> />
+      <span>★ Coup de cœur (mis en avant sur la home)</span>
+    </label>
+    <label class="admin-field">
+      <span>Ordre d'affichage</span>
+      <input type="number" name="display_order" value="<%= item?.display_order || 0 %>" />
+      <small>Les plus petits chiffres apparaissent en premier.</small>
+    </label>
+  </fieldset>
+
+  <div class="admin-form-actions">
+    <button type="submit" class="admin-btn admin-btn-primary">
+      <%= item ? 'Enregistrer les modifications' : 'Créer le plat' %>
+    </button>
+    <a href="/admin/menu" class="admin-btn admin-btn-ghost">Annuler</a>
+  </div>
+</form>

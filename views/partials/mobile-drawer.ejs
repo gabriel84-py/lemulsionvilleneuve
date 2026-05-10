@@ -1,0 +1,44 @@
+<!-- Drawer mobile fullscreen — RENDU HORS DU HEADER pour éviter que le
+     backdrop-filter / position:sticky du header piège son position:fixed. -->
+<div class="site-drawer" id="site-drawer" data-drawer aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu">
+  <nav class="site-drawer-nav" aria-label="Navigation principale (mobile)">
+    <a href="/" class="site-drawer-link"><%= t('nav.home') %></a>
+    <a href="/menu" class="site-drawer-link"><%= t('nav.menu') %></a>
+    <a href="/galerie" class="site-drawer-link"><%= t('nav.gallery') %></a>
+    <a href="/avis" class="site-drawer-link"><%= t('nav.reviews') %></a>
+    <a href="/contact" class="site-drawer-link"><%= t('nav.contact') %></a>
+  </nav>
+
+  <div class="site-drawer-actions">
+    <% if (settings && settings.social_ubereats) { %>
+      <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="site-drawer-action is-primary">
+        <strong>🛵 <%= t('nav.order') %></strong>
+        <span>Uber Eats</span>
+      </a>
+    <% } %>
+    <% if (settings && settings.phone) { %>
+      <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="site-drawer-action">
+        <strong>📞 <%= t('contact.call') %></strong>
+        <span><%= settings.phone %></span>
+      </a>
+    <% } %>
+    <% if (settings && settings.social_google_maps) { %>
+      <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="site-drawer-action">
+        <strong>📍 <%= t('contact.directions') %></strong>
+        <span><%= settings.address_city || 'Villeneuve-lès-Avignon' %></span>
+      </a>
+    <% } %>
+    <% if (settings && settings.social_instagram) { %>
+      <a href="<%= settings.social_instagram %>" target="_blank" rel="noopener" class="site-drawer-action">
+        <strong>📷 Instagram</strong>
+        <span>@streetfood_vla</span>
+      </a>
+    <% } %>
+  </div>
+
+  <div class="site-drawer-langs" aria-label="Choisir la langue">
+    <% SUPPORTED_LANGS.forEach(function(code) { %>
+      <a href="/lang/<%= code %>" class="lang-switcher-link <%= lang === code ? 'is-active' : '' %>"><%= code.toUpperCase() %></a>
+    <% }) %>
+  </div>
+</div>

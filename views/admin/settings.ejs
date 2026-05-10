@@ -1,0 +1,241 @@
+<header class="admin-page-header">
+  <h1 class="admin-h1">Contenu général</h1>
+  <p class="admin-lede">Hero, à propos, infos contact, réseaux sociaux et bandeau d'annonce.</p>
+</header>
+
+<% if (flash) { %>
+  <div class="admin-flash"><%= flash %></div>
+<% } %>
+
+<form action="/admin/settings" method="post" enctype="multipart/form-data" class="admin-form">
+  <%- include('../partials/_csrf') %>
+
+  <!-- HERO -->
+  <fieldset class="admin-fieldset">
+    <legend>Hero (page d'accueil)</legend>
+
+    <div class="admin-i18n-tabs" data-i18n-group="hero_title">
+      <div class="admin-i18n-tablist">
+        <button type="button" class="admin-i18n-tab is-active" data-lang="fr">FR</button>
+        <button type="button" class="admin-i18n-tab" data-lang="en">EN</button>
+        <button type="button" class="admin-i18n-tab" data-lang="it">IT</button>
+      </div>
+      <label class="admin-field admin-i18n-panel is-active" data-lang="fr">
+        <span>Titre principal (FR)</span>
+        <input type="text" name="hero_title_fr" value="<%= settings.hero_title?.fr || '' %>" placeholder="Ex: Smash burgers, tacos & spécialité provençale" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="en">
+        <span>Main title (EN)</span>
+        <input type="text" name="hero_title_en" value="<%= settings.hero_title?.en || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="it">
+        <span>Titolo principale (IT)</span>
+        <input type="text" name="hero_title_it" value="<%= settings.hero_title?.it || '' %>" />
+      </label>
+    </div>
+
+    <div class="admin-i18n-tabs" data-i18n-group="hero_subtitle">
+      <div class="admin-i18n-tablist">
+        <button type="button" class="admin-i18n-tab is-active" data-lang="fr">FR</button>
+        <button type="button" class="admin-i18n-tab" data-lang="en">EN</button>
+        <button type="button" class="admin-i18n-tab" data-lang="it">IT</button>
+      </div>
+      <label class="admin-field admin-i18n-panel is-active" data-lang="fr">
+        <span>Sous-titre (FR)</span>
+        <input type="text" name="hero_subtitle_fr" value="<%= settings.hero_subtitle?.fr || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="en">
+        <span>Subtitle (EN)</span>
+        <input type="text" name="hero_subtitle_en" value="<%= settings.hero_subtitle?.en || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="it">
+        <span>Sottotitolo (IT)</span>
+        <input type="text" name="hero_subtitle_it" value="<%= settings.hero_subtitle?.it || '' %>" />
+      </label>
+    </div>
+
+    <label class="admin-field">
+      <span>Image principale du hero</span>
+      <% if (settings.hero_image) { %>
+        <div class="admin-image-preview">
+          <img src="<%= settings.hero_image %>" alt="" />
+        </div>
+      <% } %>
+      <input type="file" name="hero_image" accept="image/*" />
+      <small>JPG, PNG ou WebP — max 8 MB. L'image sera redimensionnée et convertie en WebP automatiquement.</small>
+    </label>
+  </fieldset>
+
+  <!-- À PROPOS -->
+  <fieldset class="admin-fieldset">
+    <legend>Section "À propos"</legend>
+
+    <div class="admin-i18n-tabs">
+      <div class="admin-i18n-tablist">
+        <button type="button" class="admin-i18n-tab is-active" data-lang="fr">FR</button>
+        <button type="button" class="admin-i18n-tab" data-lang="en">EN</button>
+        <button type="button" class="admin-i18n-tab" data-lang="it">IT</button>
+      </div>
+      <label class="admin-field admin-i18n-panel is-active" data-lang="fr">
+        <span>Titre (FR)</span>
+        <input type="text" name="about_title_fr" value="<%= settings.about_title?.fr || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="en">
+        <span>Title (EN)</span>
+        <input type="text" name="about_title_en" value="<%= settings.about_title?.en || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="it">
+        <span>Titolo (IT)</span>
+        <input type="text" name="about_title_it" value="<%= settings.about_title?.it || '' %>" />
+      </label>
+    </div>
+
+    <div class="admin-i18n-tabs">
+      <div class="admin-i18n-tablist">
+        <button type="button" class="admin-i18n-tab is-active" data-lang="fr">FR</button>
+        <button type="button" class="admin-i18n-tab" data-lang="en">EN</button>
+        <button type="button" class="admin-i18n-tab" data-lang="it">IT</button>
+      </div>
+      <label class="admin-field admin-i18n-panel is-active" data-lang="fr">
+        <span>Texte (FR)</span>
+        <textarea name="about_text_fr" rows="6"><%= settings.about_text?.fr || '' %></textarea>
+        <small>Sautez une ligne pour créer un nouveau paragraphe.</small>
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="en">
+        <span>Text (EN)</span>
+        <textarea name="about_text_en" rows="6"><%= settings.about_text?.en || '' %></textarea>
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="it">
+        <span>Testo (IT)</span>
+        <textarea name="about_text_it" rows="6"><%= settings.about_text?.it || '' %></textarea>
+      </label>
+    </div>
+
+    <label class="admin-field">
+      <span>Image de la section "À propos"</span>
+      <% if (settings.about_image) { %>
+        <div class="admin-image-preview">
+          <img src="<%= settings.about_image %>" alt="" />
+        </div>
+      <% } %>
+      <input type="file" name="about_image" accept="image/*" />
+    </label>
+  </fieldset>
+
+  <!-- BANDEAU D'ANNONCE -->
+  <fieldset class="admin-fieldset">
+    <legend>Bandeau d'annonce (en haut du site)</legend>
+
+    <label class="admin-field admin-checkbox">
+      <input type="checkbox" name="announcement_active" value="1" <%= settings.announcement_active === '1' || settings.announcement_active === 1 ? 'checked' : '' %> />
+      <span>Activer le bandeau</span>
+    </label>
+
+    <div class="admin-i18n-tabs">
+      <div class="admin-i18n-tablist">
+        <button type="button" class="admin-i18n-tab is-active" data-lang="fr">FR</button>
+        <button type="button" class="admin-i18n-tab" data-lang="en">EN</button>
+        <button type="button" class="admin-i18n-tab" data-lang="it">IT</button>
+      </div>
+      <label class="admin-field admin-i18n-panel is-active" data-lang="fr">
+        <span>Texte (FR)</span>
+        <input type="text" name="announcement_text_fr" value="<%= settings.announcement_text?.fr || '' %>" placeholder="Ex: Fermé exceptionnellement le 14 juillet" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="en">
+        <span>Text (EN)</span>
+        <input type="text" name="announcement_text_en" value="<%= settings.announcement_text?.en || '' %>" />
+      </label>
+      <label class="admin-field admin-i18n-panel" data-lang="it">
+        <span>Testo (IT)</span>
+        <input type="text" name="announcement_text_it" value="<%= settings.announcement_text?.it || '' %>" />
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- CONTACT -->
+  <fieldset class="admin-fieldset">
+    <legend>Coordonnées</legend>
+    <label class="admin-field">
+      <span>Nom du restaurant</span>
+      <input type="text" name="restaurant_name" value="<%= settings.restaurant_name || '' %>" required />
+    </label>
+
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Téléphone</span>
+        <input type="text" name="phone" value="<%= settings.phone || '' %>" />
+      </label>
+      <label class="admin-field">
+        <span>Email</span>
+        <input type="email" name="email" value="<%= settings.email || '' %>" />
+      </label>
+    </div>
+
+    <label class="admin-field">
+      <span>Adresse</span>
+      <input type="text" name="address_street" value="<%= settings.address_street || '' %>" placeholder="17 Avenue Gabriel Péri" />
+    </label>
+
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Code postal</span>
+        <input type="text" name="address_postal" value="<%= settings.address_postal || '' %>" />
+      </label>
+      <label class="admin-field">
+        <span>Ville</span>
+        <input type="text" name="address_city" value="<%= settings.address_city || '' %>" />
+      </label>
+    </div>
+
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Latitude</span>
+        <input type="text" name="geo_lat" value="<%= settings.geo_lat || '' %>" placeholder="43.9615785" />
+      </label>
+      <label class="admin-field">
+        <span>Longitude</span>
+        <input type="text" name="geo_lng" value="<%= settings.geo_lng || '' %>" placeholder="4.7995146" />
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- RÉSEAUX SOCIAUX -->
+  <fieldset class="admin-fieldset">
+    <legend>Réseaux sociaux & livraison</legend>
+    <label class="admin-field">
+      <span>Instagram (URL)</span>
+      <input type="url" name="social_instagram" value="<%= settings.social_instagram || '' %>" placeholder="https://www.instagram.com/streetfood_vla/" />
+    </label>
+    <label class="admin-field">
+      <span>Facebook (URL)</span>
+      <input type="url" name="social_facebook" value="<%= settings.social_facebook || '' %>" />
+    </label>
+    <label class="admin-field">
+      <span>Uber Eats (URL de la fiche)</span>
+      <input type="url" name="social_ubereats" value="<%= settings.social_ubereats || '' %>" />
+    </label>
+    <label class="admin-field">
+      <span>Google Maps (URL itinéraire)</span>
+      <input type="url" name="social_google_maps" value="<%= settings.social_google_maps || '' %>" />
+    </label>
+  </fieldset>
+
+  <!-- NOTE -->
+  <fieldset class="admin-fieldset">
+    <legend>Note Google (pour les badges du site)</legend>
+    <div class="admin-grid-2">
+      <label class="admin-field">
+        <span>Note moyenne</span>
+        <input type="text" name="rating_value" value="<%= settings.rating_value || '4.8' %>" />
+      </label>
+      <label class="admin-field">
+        <span>Nombre d'avis</span>
+        <input type="text" name="rating_count" value="<%= settings.rating_count || '292' %>" />
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="admin-form-actions">
+    <button type="submit" class="admin-btn admin-btn-primary">Enregistrer les modifications</button>
+  </div>
+</form>

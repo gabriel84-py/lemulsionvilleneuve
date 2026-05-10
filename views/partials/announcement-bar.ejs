@@ -1,0 +1,11 @@
+<% if (settings.announcement_active === '1' || settings.announcement_active === 1) { %>
+  <% var annText = tr(settings.announcement_text); %>
+  <% if (annText) { %>
+    <div class="announcement-bar">
+      <div class="announcement-bar-inner">
+        <span class="announcement-bar-icon">★</span>
+        <span class="announcement-bar-text"><%= annText %></span>
+      </div>
+    </div>
+  <% } %>
+<% } %>
