@@ -1,8 +1,8 @@
 <section class="error-page">
   <div class="error-page-inner reveal">
     <span class="error-page-code">404</span>
-    <h1 class="page-title">Cette page s'est échappée de la cuisine</h1>
-    <p class="page-subtitle">La page que vous cherchez n'existe pas. Mais le menu, lui, est bien là.</p>
+    <h1 class="page-title"><em><%= t('error.404_title') %></em></h1>
+    <p class="page-subtitle"><%= t('error.404_text') %></p>
     <div class="error-page-actions">
       <a href="/" class="btn btn-primary"><%= t('nav.home') %></a>
       <a href="/menu" class="btn btn-ghost"><%= t('nav.menu') %></a>

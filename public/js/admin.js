@@ -1,5 +1,5 @@
 /**
- * Street Food Vla — JS admin
+ * L'Émulsion — JS admin
  * i18n tabs + gallery drag/drop reorder
  */
 

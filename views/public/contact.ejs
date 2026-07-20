@@ -1,41 +1,43 @@
 <section class="page-header">
   <div class="page-header-inner reveal">
+    <span class="chapter-num">VI. Chapitre</span>
     <span class="eyebrow"><%= t('contact.subtitle') %></span>
-    <h1 class="page-title"><%= t('contact.title') %></h1>
+    <h1 class="page-title"><em><%= t('contact.title') %></em></h1>
+    <div class="ornament" aria-hidden="true"><span class="ornament-diamond"></span></div>
   </div>
 </section>
 
 <section class="contact-page">
   <div class="contact-page-grid">
     <div class="contact-info reveal">
+      <!-- Bloc téléphone monumental -->
+      <% if (settings.phone) { %>
+      <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="contact-phone-hero">
+        <span class="contact-phone-hero-label"><%= t('nav.reserve') %></span>
+        <span class="contact-phone-hero-number"><%= settings.phone %></span>
+        <span class="contact-phone-hero-note"><%= t('contact.tap_to_call') %></span>
+      </a>
+      <% } %>
+
       <div class="contact-info-block">
         <h3><%= t('contact.address') %></h3>
         <p>
-          <%= settings.address_street || '17 Avenue Gabriel Péri' %><br />
+          <%= settings.address_street || '1 rue de l\'Hôpital' %><br />
           <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %>
         </p>
         <% if (settings.social_google_maps) { %>
-          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="contact-link">↗ <%= t('contact.directions') %></a>
+          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="contact-link"><%= t('contact.directions') %> →</a>
         <% } %>
       </div>
 
-      <div class="contact-info-block">
-        <h3><%= t('contact.phone') %></h3>
-        <% if (settings.phone) { %>
-          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="contact-link contact-link-big">
-            <%= settings.phone %>
-          </a>
-        <% } %>
-      </div>
-
+      <% if (settings.email) { %>
       <div class="contact-info-block">
         <h3><%= t('contact.email') %></h3>
-        <% if (settings.email) { %>
-          <a href="mailto:<%= settings.email %>" class="contact-link contact-link-big">
-            <%= settings.email %>
-          </a>
-        <% } %>
+        <a href="mailto:<%= settings.email %>" class="contact-link contact-link-big">
+          <%= settings.email %>
+        </a>
       </div>
+      <% } %>
 
       <div class="contact-info-block">
         <h3><%= t('contact.hours') %></h3>
@@ -64,14 +66,14 @@
                 <th><%= h.dayLabel %></th>
                 <td>
                   <% if (h.lunch && !h.lunch.is_closed && h.lunch.opens) { %>
-                    <%= h.lunch.opens %>—<%= h.lunch.closes %>
+                    <%= h.lunch.opens %>–<%= h.lunch.closes %>
                   <% } else { %>
                     <em><%= t('contact.closed') %></em>
                   <% } %>
                 </td>
                 <td>
                   <% if (h.dinner && !h.dinner.is_closed && h.dinner.opens) { %>
-                    <%= h.dinner.opens %>—<%= h.dinner.closes %>
+                    <%= h.dinner.opens %>–<%= h.dinner.closes %>
                   <% } else { %>
                     <em><%= t('contact.closed') %></em>
                   <% } %>
@@ -90,9 +92,6 @@
           <% } %>
           <% if (settings.social_facebook) { %>
             <a href="<%= settings.social_facebook %>" target="_blank" rel="noopener" class="contact-social">Facebook</a>
-          <% } %>
-          <% if (settings.social_ubereats) { %>
-            <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="contact-social">Uber Eats</a>
           <% } %>
         </div>
       </div>

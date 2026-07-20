@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90" role="img" aria-label="Damien Chocano">
+  <title>Damien Chocano</title>
+  <!-- Calligraphie stylisée en un trait -->
+  <path d="M 12 55
+           C 22 30, 32 20, 40 42
+           S 42 68, 50 55
+           M 55 55 L 55 30
+           M 55 55 Q 62 42, 70 55 T 82 55
+           M 88 55 L 82 30
+           M 88 55 L 94 30
+           M 100 55 Q 108 30, 118 42 T 130 55
+           C 118 55, 112 44, 118 42
+           M 138 55 L 138 30
+           M 138 55 C 148 40, 158 45, 158 55
+           M 168 30 Q 175 40, 168 55 Q 165 68, 175 63"
+        fill="none" stroke="#b8945a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Sous-ligne (le "trait de fin") -->
+  <path d="M 12 68 Q 100 76, 200 66" fill="none" stroke="#b8945a" stroke-width="0.8" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Version texte lisible en dessous (fallback typographique) -->
+  <text x="12" y="86" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-size="10" fill="#94743f" letter-spacing="1">Damien Chocano · chef</text>
+</svg>

@@ -1,5 +1,5 @@
 /**
- * Street Food Vla — Serveur principal
+ * L'Émulsion — Serveur principal
  */
 require('dotenv').config();
 
@@ -228,7 +228,7 @@ app.use((err, req, res, next) => {
 
 // ─── STARTUP ────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🍔 Street Food Vla — serveur démarré`);
+  console.log(`\n✦ L'Émulsion — serveur démarré`);
   console.log(`   ▸ http://localhost:${PORT}`);
   console.log(`   ▸ Admin : http://localhost:${PORT}/admin/login`);
   console.log(`   ▸ Mode  : ${isProd ? 'production' : 'development'}\n`);

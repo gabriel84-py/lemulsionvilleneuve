@@ -1,9 +1,9 @@
 <section class="page-header">
   <div class="page-header-inner reveal">
     <span class="eyebrow">★★★★★ <%= settings.rating_value || '4.8' %>/5</span>
-    <h1 class="page-title"><%= t('reviews.title') %></h1>
+    <h1 class="page-title"><em><%= t('reviews.title') %></em></h1>
     <p class="page-subtitle">
-      <%= t('reviews.subtitle', { rating: settings.rating_value || '4.8', count: settings.rating_count || '292' }) %>
+      <%= t('reviews.subtitle', { rating: settings.rating_value || '4.8', count: settings.rating_count || '126' }) %>
     </p>
   </div>
 </section>
@@ -27,13 +27,13 @@
       <% }) %>
     </div>
   <% } else { %>
-    <p class="empty-state">Pas d'avis pour le moment.</p>
+    <p class="empty-state"><%= t('reviews.empty') %></p>
   <% } %>
 
   <% if (settings.social_google_maps) { %>
     <div class="reviews-page-cta reveal">
       <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="btn btn-outline">
-        <%= lang === 'en' ? 'See all on Google' : (lang === 'it' ? 'Vedi tutto su Google' : 'Voir tous les avis sur Google') %>
+        <%= t('reviews.see_google') %>
         <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
     </div>

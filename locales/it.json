@@ -5,38 +5,53 @@
   },
   "nav": {
     "home": "Home",
-    "menu": "Menù",
+    "menu": "La carta",
     "about": "La nostra storia",
     "gallery": "Galleria",
     "reviews": "Recensioni",
     "contact": "Contatti",
-    "order": "Ordina"
+    "reserve": "Prenota",
+    "reserve_online": "Prenotazione online"
   },
   "hero": {
-    "subtitle": "Smash burger · Tacos · Specialità provenzale",
-    "cta_menu": "Vedi il menù",
-    "cta_order": "Ordina su Uber Eats",
-    "rating_label": "{stars}/5 · {count} recensioni Google"
+    "subtitle": "Bistronomia · Prodotti del mercato · Villeneuve-lès-Avignon",
+    "cta_menu": "Vedi la carta",
+    "rating_label": "{stars}/5 · {count} recensioni"
   },
   "about": {
-    "title": "Il gusto del fatto in casa",
-    "subtitle": "La nostra filosofia"
+    "title": "La cucina, come un'emulsione",
+    "subtitle": "Lo spirito della casa",
+    "feature_1_label": "01 · Mercato",
+    "feature_1_text": "95 % di prodotti locali",
+    "feature_2_label": "02 · Carta del giorno",
+    "feature_2_text": "Composta ogni mattina",
+    "feature_3_label": "03 · Su misura",
+    "feature_3_text": "Cotture a bassa T° & al momento",
+    "feature_4_label": "04 · Cornice",
+    "feature_4_text": "Volta del XVII sec., di fronte alla Collegiata"
+  },
+  "featured": {
+    "title": "Firme dello chef"
   },
   "menu": {
-    "title": "Il menù",
-    "subtitle": "Tutto è preparato in casa, con prodotti freschi e locali",
-    "veggie": "Veggie",
-    "featured": "Preferito",
+    "title": "La carta",
+    "subtitle": "Composta al mercato, ogni mattina",
+    "lede": "La nostra carta evolve al ritmo del mercato e delle stagioni. Ecco un'anteprima di ciò che lo chef ama servire — la carta effettiva del giorno vi sarà presentata al tavolo.",
+    "veggie": "Vegetariano",
+    "featured": "Firma",
     "from": "da"
   },
   "gallery": {
     "title": "Galleria",
-    "subtitle": "Uno sguardo al locale"
+    "subtitle": "Uno sguardo alla casa",
+    "empty": "La galleria è in preparazione."
   },
   "reviews": {
     "title": "Dicono di noi",
-    "subtitle": "{rating}/5 su Google · {count} recensioni",
-    "see_all": "Vedi tutte le recensioni"
+    "subtitle": "{rating}/5 su TripAdvisor e Google · {count} recensioni",
+    "see_all": "Vedi tutte le recensioni",
+    "see_google": "Vedi tutte le recensioni su Google",
+    "empty": "Nessuna recensione al momento."
   },
   "contact": {
     "title": "Dove trovarci",
@@ -45,7 +60,7 @@
     "phone": "Telefono",
     "email": "Email",
     "hours": "Orari",
-    "open_now": "Aperto ora",
+    "open_now": "Aperto",
     "closed_now": "Chiuso",
     "lunch": "Pranzo",
     "dinner": "Cena",
@@ -53,13 +68,33 @@
     "follow_us": "Seguici",
     "directions": "Indicazioni",
     "call": "Chiama",
-    "send_email": "Manda una email"
+    "send_email": "Invia una email",
+    "book_online": "Prenota un tavolo online",
+    "tap_to_call": "Chiama per prenotare",
+    "via": "tramite"
   },
   "footer": {
-    "tagline": "Smash burger gourmet · Villeneuve-lès-Avignon",
-    "made_with": "Creato con passione",
+    "tagline": "Bistronomia francese · Villeneuve-lès-Avignon",
+    "made_with": "Realizzato con cura",
     "legal": "Note legali",
     "rights": "Tutti i diritti riservati"
+  },
+  "error": {
+    "404_title": "Questa pagina si è persa in cucina",
+    "404_text": "La pagina cercata non esiste. Ma la carta, quella, è proprio qui.",
+    "500_title": "Un granello di sabbia nel servizio",
+    "500_text": "Qualcosa è andato storto. Ci stiamo lavorando — riprovate tra un istante."
+  },
+  "legal": {
+    "editor": "Editore del sito",
+    "hosting": "Hosting",
+    "hosting_todo": "Da compilare a cura dell'editore.",
+    "ip": "Proprietà intellettuale",
+    "ip_text": "L'insieme degli elementi presenti su questo sito (testi, fotografie, logo, contenuti) è protetto dal diritto d'autore. Ogni riproduzione, totale o parziale, è vietata senza previa autorizzazione scritta.",
+    "data": "Dati personali",
+    "data_text": "Questo sito non utilizza cookie di tracciamento o profilazione. Un cookie tecnico è utilizzato per la sessione dell'amministratore, e uno per la preferenza di lingua. Nessun dato personale è raccolto dai visitatori.",
+    "credits": "Crediti",
+    "credits_text": "Sito ideato e sviluppato su misura."
   },
   "admin": {
     "login": "Accesso",

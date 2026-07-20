@@ -1,7 +1,7 @@
 <section class="page-header">
   <div class="page-header-inner reveal">
     <span class="eyebrow"><%= t('gallery.subtitle') %></span>
-    <h1 class="page-title"><%= t('gallery.title') %></h1>
+    <h1 class="page-title"><em><%= t('gallery.title') %></em></h1>
   </div>
 </section>
 
@@ -19,6 +19,6 @@
       <% }) %>
     </div>
   <% } else { %>
-    <p class="empty-state">La galerie est en préparation.</p>
+    <p class="empty-state"><%= t('gallery.empty') %></p>
   <% } %>
 </section>

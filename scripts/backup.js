@@ -12,7 +12,7 @@ const Database = require('better-sqlite3');
 
 const ROOT = path.join(__dirname, '..');
 const BACKUP_DIR = path.join(ROOT, 'backups');
-const DB_PATH = path.join(ROOT, 'data', 'streetfood.db');
+const DB_PATH = path.join(ROOT, 'data', 'lemulsion.db');
 const UPLOADS_DIR = path.join(ROOT, 'public', 'uploads');
 
 if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
@@ -20,9 +20,9 @@ if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
 const now = new Date();
 const stamp = now.toISOString().replace(/[:.]/g, '-').slice(0, 16);
 const tmpDir = path.join(BACKUP_DIR, `tmp-${stamp}`);
-const archivePath = path.join(BACKUP_DIR, `streetfood-${stamp}.tar.gz`);
+const archivePath = path.join(BACKUP_DIR, `lemulsion-${stamp}.tar.gz`);
 
-console.log('\n🍔 Street Food Vla — Backup\n');
+console.log('\n✦ L\'Émulsion — Backup\n');
 
 try {
   fs.mkdirSync(tmpDir, { recursive: true });
@@ -31,7 +31,7 @@ try {
   if (fs.existsSync(DB_PATH)) {
     console.log('▸ Sauvegarde de la base de données…');
     const db = new Database(DB_PATH, { readonly: true });
-    const dbBackupPath = path.join(tmpDir, 'streetfood.db');
+    const dbBackupPath = path.join(tmpDir, 'lemulsion.db');
     db.backup(dbBackupPath).then(() => db.close()).catch(() => {});
     // L'API .backup est async mais on peut aussi simplement copier le WAL :
     // pour la robustesse on fait une copie simple synchrone du fichier ici si .backup échoue

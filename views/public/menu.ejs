@@ -1,12 +1,14 @@
 <section class="page-header">
   <div class="page-header-inner reveal">
+    <span class="chapter-num">III. Chapitre</span>
     <span class="eyebrow"><%= t('menu.subtitle') %></span>
-    <h1 class="page-title"><%= t('menu.title') %></h1>
+    <h1 class="page-title"><em><%= t('menu.title') %></em></h1>
+    <p class="page-subtitle"><%= t('menu.lede') %></p>
+    <div class="ornament" aria-hidden="true"><span class="ornament-diamond"></span></div>
   </div>
 </section>
 
 <section class="menu-page">
-  <!-- Sticky category nav -->
   <nav class="menu-categories" aria-label="Catégories">
     <% menu.forEach(function(cat) { %>
       <a href="#cat-<%= cat.slug %>" class="menu-category-link" data-cat-link="<%= cat.slug %>">
@@ -31,7 +33,7 @@
 
           <div class="menu-items">
             <% cat.items.forEach(function(item, idx) { %>
-              <article class="menu-item reveal" style="--delay: <%= (idx % 4) * 0.05 %>s">
+              <article class="menu-item reveal" style="--delay: <%= (idx % 4) * 0.06 %>s">
                 <% if (item.image_path) { %>
                   <div class="menu-item-image">
                     <img src="<%= item.image_path %>" alt="<%= tr({ fr: item.name_fr, en: item.name_en, it: item.name_it }) %>" loading="lazy" />
@@ -41,11 +43,11 @@
                   <div class="menu-item-head">
                     <h3 class="menu-item-name">
                       <%= tr({ fr: item.name_fr, en: item.name_en, it: item.name_it }) %>
-                      <% if (item.is_veggie) { %>
-                        <span class="badge-veggie-inline" title="<%= t('menu.veggie') %>">🌱</span>
-                      <% } %>
                       <% if (item.is_featured) { %>
-                        <span class="badge-featured" title="<%= t('menu.featured') %>">★</span>
+                        <span class="badge-featured" title="<%= t('menu.featured') %>">✦</span>
+                      <% } %>
+                      <% if (item.is_veggie) { %>
+                        <span class="badge-veggie-inline" title="<%= t('menu.veggie') %>"><%= t('menu.veggie') %></span>
                       <% } %>
                     </h3>
                     <span class="menu-item-dots" aria-hidden="true"></span>
@@ -65,10 +67,10 @@
   </div>
 
   <div class="menu-page-cta reveal">
-    <% if (settings.social_ubereats) { %>
-      <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-        <%= t('hero.cta_order') %>
-        <span class="btn-arrow" aria-hidden="true">→</span>
+    <% if (settings.phone) { %>
+      <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="btn-phone">
+        <span class="btn-phone-label"><%= t('nav.reserve') %></span>
+        <span class="btn-phone-number"><%= settings.phone %></span>
       </a>
     <% } %>
   </div>

@@ -8,7 +8,7 @@ const path = require('path');
 const fs = require('fs');
 
 const DB_DIR = path.join(__dirname, '..', '..', 'data');
-const DB_PATH = path.join(DB_DIR, 'streetfood.db');
+const DB_PATH = path.join(DB_DIR, 'lemulsion.db');
 
 // Ensure data directory exists
 if (!fs.existsSync(DB_DIR)) {
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS gallery (
 CREATE TABLE IF NOT EXISTS reviews (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author TEXT NOT NULL,
-  source TEXT, -- "Google", "Uber Eats", etc.
+  source TEXT, -- "Google", "TripAdvisor", etc.
   rating INTEGER CHECK(rating BETWEEN 1 AND 5),
   content_fr TEXT NOT NULL,
   content_en TEXT,

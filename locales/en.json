@@ -10,42 +10,57 @@
     "gallery": "Gallery",
     "reviews": "Reviews",
     "contact": "Contact",
-    "order": "Order"
+    "reserve": "Book a table",
+    "reserve_online": "Online booking"
   },
   "hero": {
-    "subtitle": "Smash burgers · Tacos · Provençal specialty",
+    "subtitle": "Bistronomy · Market produce · Villeneuve-lès-Avignon",
     "cta_menu": "See the menu",
-    "cta_order": "Order on Uber Eats",
-    "rating_label": "{stars}/5 · {count} Google reviews"
+    "rating_label": "{stars}/5 · {count} reviews"
   },
   "about": {
-    "title": "The taste of homemade",
-    "subtitle": "Our philosophy"
+    "title": "Cooking, like an emulsion",
+    "subtitle": "The spirit of the house",
+    "feature_1_label": "01 · Market",
+    "feature_1_text": "95% local produce",
+    "feature_2_label": "02 · Daily menu",
+    "feature_2_text": "Composed every morning",
+    "feature_3_label": "03 · Bespoke",
+    "feature_3_text": "Low-temperature & à-la-minute cooking",
+    "feature_4_label": "04 · Setting",
+    "feature_4_text": "17th-century vault, facing the Collegiate"
+  },
+  "featured": {
+    "title": "Chef's signatures"
   },
   "menu": {
-    "title": "Menu",
-    "subtitle": "Everything is homemade with fresh, local ingredients",
+    "title": "The menu",
+    "subtitle": "Composed at the market, every morning",
+    "lede": "Our menu evolves with the market and the seasons. Here is a glimpse of what the chef likes to serve — the actual menu of the day will be presented at your table.",
     "veggie": "Veggie",
-    "featured": "Favorite",
+    "featured": "Signature",
     "from": "from"
   },
   "gallery": {
     "title": "Gallery",
-    "subtitle": "A glimpse of the place"
+    "subtitle": "A glimpse of the house",
+    "empty": "The gallery is being prepared."
   },
   "reviews": {
     "title": "What they say",
-    "subtitle": "{rating}/5 on Google · {count} reviews",
-    "see_all": "See all reviews"
+    "subtitle": "{rating}/5 on TripAdvisor & Google · {count} reviews",
+    "see_all": "See all reviews",
+    "see_google": "See all reviews on Google",
+    "empty": "No reviews yet."
   },
   "contact": {
     "title": "Find us",
-    "subtitle": "We're waiting for you",
+    "subtitle": "We're expecting you",
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
     "hours": "Opening hours",
-    "open_now": "Open now",
+    "open_now": "Open",
     "closed_now": "Closed",
     "lunch": "Lunch",
     "dinner": "Dinner",
@@ -53,13 +68,33 @@
     "follow_us": "Follow us",
     "directions": "Directions",
     "call": "Call",
-    "send_email": "Send email"
+    "send_email": "Send email",
+    "book_online": "Book a table online",
+    "tap_to_call": "Tap to book",
+    "via": "via"
   },
   "footer": {
-    "tagline": "Gourmet smash burgers · Villeneuve-lès-Avignon",
-    "made_with": "Crafted with passion",
+    "tagline": "French bistronomy · Villeneuve-lès-Avignon",
+    "made_with": "Made with care",
     "legal": "Legal notice",
     "rights": "All rights reserved"
+  },
+  "error": {
+    "404_title": "This page got lost in the kitchen",
+    "404_text": "The page you're looking for doesn't exist. But the menu, of course, is right here.",
+    "500_title": "A grain of sand in the service",
+    "500_text": "Something went wrong. We're on it — please try again in a moment."
+  },
+  "legal": {
+    "editor": "Site editor",
+    "hosting": "Hosting",
+    "hosting_todo": "To be filled in by the editor.",
+    "ip": "Intellectual property",
+    "ip_text": "All content on this site (text, photographs, logo, materials) is protected by copyright. Any reproduction, in whole or in part, is prohibited without prior written permission.",
+    "data": "Personal data",
+    "data_text": "This site uses no tracking or profiling cookies. A technical cookie is used for the administrator session, and one for the language preference. No personal data is collected from visitors.",
+    "credits": "Credits",
+    "credits_text": "Site designed and developed bespoke."
   },
   "admin": {
     "login": "Login",

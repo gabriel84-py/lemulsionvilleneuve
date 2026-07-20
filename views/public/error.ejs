@@ -1,10 +1,10 @@
 <section class="error-page">
   <div class="error-page-inner reveal">
     <span class="error-page-code">500</span>
-    <h1 class="page-title">Un grain de sable dans la machine</h1>
-    <p class="page-subtitle">Une erreur est survenue. On s'occupe de la régler — réessayez dans un instant.</p>
+    <h1 class="page-title"><em><%= t('error.500_title') %></em></h1>
+    <p class="page-subtitle"><%= t('error.500_text') %></p>
     <div class="error-page-actions">
-      <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+      <a href="/" class="btn btn-primary"><%= t('nav.home') %></a>
     </div>
     <% if (typeof error !== 'undefined' && error) { %>
       <pre class="error-page-debug"><%= error.stack || error.message %></pre>

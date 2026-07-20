@@ -108,13 +108,14 @@ router.post('/settings',
       address_street: 200, address_postal: 20, address_city: 120,
       geo_lat: 40, geo_lng: 40,
       rating_value: 10, rating_count: 10,
+      meta_description: 320,
     };
     for (const [key, max] of Object.entries(simpleStrings)) {
       if (body[key] !== undefined) setSetting(key, reqStr(body[key], max));
     }
 
     // URLs : validation stricte (anti javascript:)
-    const urlKeys = ['social_instagram', 'social_facebook', 'social_ubereats', 'social_google_maps'];
+    const urlKeys = ['social_instagram', 'social_facebook', 'social_google_maps'];
     for (const key of urlKeys) {
       if (body[key] !== undefined) {
         const cleaned = isSafeUrl(body[key]) || '';

@@ -1,7 +1,7 @@
 {
-  "name": "streetfood-vla",
+  "name": "lemulsion",
   "version": "1.0.0",
-  "description": "Site vitrine du restaurant Street Food Vla — Villeneuve-lès-Avignon",
+  "description": "Site vitrine du restaurant L'Émulsion — bistronomie à Villeneuve-lès-Avignon",
   "main": "src/server.js",
   "type": "commonjs",
   "scripts": {

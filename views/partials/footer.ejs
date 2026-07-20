@@ -9,18 +9,18 @@
       <div class="site-footer-col">
         <h4 class="site-footer-title"><%= t('contact.address') %></h4>
         <p>
-          <%= settings.address_street || '17 Avenue Gabriel Péri' %><br />
+          <%= settings.address_street || '1 rue de l\'Hôpital' %><br />
           <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %>
         </p>
         <% if (settings.social_google_maps) { %>
-          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="site-footer-link">↗ <%= t('contact.directions') %></a>
+          <a href="<%= settings.social_google_maps %>" target="_blank" rel="noopener" class="site-footer-link"><%= t('contact.directions') %> →</a>
         <% } %>
       </div>
 
       <div class="site-footer-col">
-        <h4 class="site-footer-title"><%= t('contact.phone') %> & <%= t('contact.email') %></h4>
+        <h4 class="site-footer-title"><%= t('nav.reserve') %></h4>
         <% if (settings.phone) { %>
-          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="site-footer-link"><%= settings.phone %></a><br />
+          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="site-footer-link site-footer-link-phone"><%= settings.phone %></a><br />
         <% } %>
         <% if (settings.email) { %>
           <a href="mailto:<%= settings.email %>" class="site-footer-link"><%= settings.email %></a>
@@ -36,9 +36,6 @@
           <% if (settings.social_facebook) { %>
             <a href="<%= settings.social_facebook %>" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
           <% } %>
-          <% if (settings.social_ubereats) { %>
-            <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" aria-label="Uber Eats">Uber Eats</a>
-          <% } %>
         </div>
       </div>
 
@@ -50,7 +47,7 @@
               <span><%= h.dayLabel %></span>
               <em>
                 <% if (h.lunch && !h.lunch.is_closed && h.lunch.opens) { %>
-                  <%= h.lunch.opens %>-<%= h.lunch.closes %><% } %><% if (h.lunch && !h.lunch.is_closed && h.dinner && !h.dinner.is_closed) { %> · <% } %><% if (h.dinner && !h.dinner.is_closed && h.dinner.opens) { %><%= h.dinner.opens %>-<%= h.dinner.closes %>
+                  <%= h.lunch.opens %>–<%= h.lunch.closes %><% } %><% if (h.lunch && !h.lunch.is_closed && h.dinner && !h.dinner.is_closed) { %> · <% } %><% if (h.dinner && !h.dinner.is_closed && h.dinner.opens) { %><%= h.dinner.opens %>–<%= h.dinner.closes %>
                 <% } %>
                 <% if ((!h.lunch || h.lunch.is_closed) && (!h.dinner || h.dinner.is_closed)) { %>—<% } %>
               </em>
@@ -61,7 +58,7 @@
     </div>
 
     <div class="site-footer-bottom">
-      <p>© <%= year %> <%= settings.restaurant_name || 'Street Food Vla' %> · <%= t('footer.rights') %></p>
+      <p>© <%= year %> · <%= settings.restaurant_name || 'L\'Émulsion' %> · <%= t('footer.rights') %></p>
       <p>
         <a href="/mentions-legales" class="site-footer-link"><%= t('footer.legal') %></a>
         <span aria-hidden="true" class="site-footer-sep">·</span>

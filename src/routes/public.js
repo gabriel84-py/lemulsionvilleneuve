@@ -127,7 +127,7 @@ router.get('/structured-data.json', (req, res) => {
   const jsonld = {
     '@context': 'https://schema.org',
     '@type': 'Restaurant',
-    name: settings.restaurant_name || 'Street Food Vla',
+    name: settings.restaurant_name || 'L\'Émulsion',
     image: `${process.env.PUBLIC_URL || ''}/images/logo.jpg`,
     address: {
       '@type': 'PostalAddress',
@@ -143,10 +143,18 @@ router.get('/structured-data.json', (req, res) => {
     },
     telephone: settings.phone || '',
     email: settings.email || '',
-    servesCuisine: ['Burger', 'Tacos', 'American', 'French'],
-    priceRange: '€€',
-    sameAs: [settings.social_instagram, settings.social_facebook, settings.social_ubereats].filter(Boolean),
+    servesCuisine: ['French', 'Bistronomy', 'Provençal'],
+    priceRange: '€€€',
+    acceptsReservations: true,
+    sameAs: [settings.social_instagram, settings.social_facebook].filter(Boolean),
   };
+
+  if (settings.phone) {
+    jsonld.potentialAction = {
+      '@type': 'ReserveAction',
+      target: `tel:${settings.phone.replace(/\s/g, '')}`,
+    };
+  }
 
   res.json(jsonld);
 });

@@ -1,8 +1,19 @@
-<!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-<section class="hero">
+<!-- ─── HERO ÉDITORIAL ─────────────────────────────────────────────────── -->
+<section class="hero" data-hero>
+  <div class="hero-artwork" aria-hidden="true">
+    <% if (settings.hero_image) { %>
+      <img src="<%= settings.hero_image %>" alt="" />
+    <% } else { %>
+      <img src="/images/hero-artwork.svg" alt="" />
+    <% } %>
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <span class="hero-corner-num" aria-hidden="true">I</span>
+
   <div class="hero-grid">
-    <div class="hero-content reveal">
-      <div class="hero-status">
+    <div class="hero-content">
+      <div class="hero-status reveal-fade" style="--delay: 0.1s">
         <% if (status.isOpen) { %>
           <span class="status-dot is-open" aria-hidden="true"></span>
           <span><%= status.message %></span>
@@ -12,84 +23,66 @@
         <% } %>
       </div>
 
-      <h1 class="hero-title">
-        <% var heroTitle = tr(settings.hero_title) || 'Smash burgers, tacos & spécialité provençale'; %>
+      <span class="hero-eyebrow reveal-fade" style="--delay: 0.15s">
+        Bistronomie · Depuis 2019
+      </span>
+
+      <h1 class="hero-title reveal" style="--delay: 0.2s">
+        <% var heroTitle = tr(settings.hero_title) || 'Bistronomie sous les arcades'; %>
         <%= heroTitle %>
       </h1>
 
-      <p class="hero-subtitle">
+      <span class="hero-title-rule reveal-rule" style="--delay: 0.55s" aria-hidden="true"></span>
+
+      <p class="hero-subtitle reveal-fade" style="--delay: 0.4s">
         <% var heroSub = tr(settings.hero_subtitle) || t('hero.subtitle'); %>
         <%= heroSub %>
       </p>
 
-      <div class="hero-actions">
-        <a href="/menu" class="btn btn-primary">
+      <div class="hero-actions reveal-fade" style="--delay: 0.55s">
+        <% if (settings.phone) { %>
+          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="btn-phone">
+            <span class="btn-phone-label"><%= t('nav.reserve') %></span>
+            <span class="btn-phone-number"><%= settings.phone %></span>
+          </a>
+        <% } %>
+        <a href="/menu" class="btn btn-outline--gold btn-lg">
           <span><%= t('hero.cta_menu') %></span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
-        <% if (settings.social_ubereats) { %>
-          <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="btn btn-ghost">
-            <%= t('hero.cta_order') %>
-          </a>
-        <% } %>
       </div>
 
-      <div class="hero-rating">
-        <div class="hero-rating-stars" aria-hidden="true">
-          <% for (var i = 0; i < 5; i++) { %><span>★</span><% } %>
-        </div>
+      <div class="hero-rating reveal-fade" style="--delay: 0.7s">
+        <div class="hero-rating-stars" aria-hidden="true">★ ★ ★ ★ ★</div>
         <p>
-          <strong><%= settings.rating_value || '4.8' %>/5</strong> ·
-          <%= settings.rating_count || '292' %> <%= lang === 'en' ? 'Google reviews' : (lang === 'it' ? 'recensioni Google' : 'avis Google') %>
+          <strong><%= settings.rating_value || '4.8' %>/5</strong>
+          <span>· <%= settings.rating_count || '126' %> <%= lang === 'en' ? 'reviews on TripAdvisor & Google' : (lang === 'it' ? 'recensioni su TripAdvisor e Google' : 'avis sur TripAdvisor & Google') %></span>
         </p>
       </div>
     </div>
-
-    <div class="hero-visual reveal">
-      <div class="hero-visual-frame">
-        <% if (settings.hero_image) { %>
-          <img src="<%= settings.hero_image %>" alt="" class="hero-visual-image" />
-        <% } else if (featured && featured.length && featured[0].image_path) { %>
-          <img src="<%= featured[0].image_path %>" alt="" class="hero-visual-image" />
-        <% } else { %>
-          <div class="hero-visual-placeholder">
-            <span>🍔</span>
-            <em>Photo à venir</em>
-          </div>
-        <% } %>
-      </div>
-
-      <!-- Floating badges -->
-      <div class="hero-badge hero-badge-1" aria-hidden="true">
-        <strong>100%</strong>
-        <span>fait maison</span>
-      </div>
-      <div class="hero-badge hero-badge-2" aria-hidden="true">
-        <strong>🇫🇷</strong>
-        <span>viande Limousine</span>
-      </div>
-    </div>
   </div>
 
-  <!-- Marquee defil ticker -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <% for (var i = 0; i < 3; i++) { %>
-        <span>SMASH BURGERS</span><span class="marquee-dot">●</span>
-        <span>TACOS</span><span class="marquee-dot">●</span>
-        <span>FRITES DE PANISSES</span><span class="marquee-dot">●</span>
-        <span>VIANDE LIMOUSINE</span><span class="marquee-dot">●</span>
-        <span>FAIT MAISON</span><span class="marquee-dot">●</span>
-        <span>PRODUITS LOCAUX</span><span class="marquee-dot">●</span>
-      <% } %>
-    </div>
-  </div>
+  <span class="hero-scroll" aria-hidden="true">Faites défiler</span>
 </section>
+
+<!-- ─── MARQUEE ────────────────────────────────────────────────────────── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <% for (var i = 0; i < 3; i++) { %>
+      <span>Bistronomie</span><span class="marquee-dot">◆</span>
+      <span>Produits du marché</span><span class="marquee-dot">◆</span>
+      <span>Villeneuve-lès-Avignon</span><span class="marquee-dot">◆</span>
+      <span>Carte du jour</span><span class="marquee-dot">◆</span>
+      <span>Table gourmande</span><span class="marquee-dot">◆</span>
+    <% } %>
+  </div>
+</div>
 
 <!-- ─── ABOUT ──────────────────────────────────────────────────────────── -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-content reveal">
+      <span class="chapter-num">II. Chapitre</span>
       <span class="eyebrow"><%= t('about.subtitle') %></span>
       <h2 class="section-title">
         <% var aboutTitle = tr(settings.about_title) || t('about.title'); %>
@@ -99,28 +92,33 @@
         <% var aboutText = tr(settings.about_text); %>
         <% if (aboutText) { %>
           <%- aboutText.split('\n').filter(function(p) { return p.trim(); }).map(function(p) { return '<p>' + p + '</p>'; }).join('') %>
-        <% } else { %>
-          <p>Chez Street Food, on aime les bonnes choses. Notre viande est française race Limousine, nos frites sont coupées et dorées maison, nos sauces sont de recette secrète, et même la mousse au chocolat est faite par nos soins.</p>
-          <p>Avec une touche provençale qu'on adore — les frites de panisses, à base de farine de pois chiches — on revisite le smash burger avec gourmandise et fraîcheur. Et chaque mois, un nouveau "Daily Street Smash" sort de la cuisine.</p>
         <% } %>
+      </div>
+
+      <div class="about-signature">
+        <img src="/images/signature.svg" alt="Damien Chocano" />
+        <div class="about-signature-meta">
+          <strong>Damien Chocano</strong>
+          <%= lang === 'en' ? 'Chef & founder' : (lang === 'it' ? 'Chef e fondatore' : 'Chef & fondateur') %>
+        </div>
       </div>
 
       <div class="about-features">
         <div class="about-feature">
-          <strong>🇫🇷</strong>
-          <span>Viande française<br/>race Limousine</span>
+          <span><%= t('about.feature_1_text') %></span>
+          <strong><%= t('about.feature_1_label') %></strong>
         </div>
         <div class="about-feature">
-          <strong>🌿</strong>
-          <span>Produits frais<br/>& locaux</span>
+          <span><%= t('about.feature_2_text') %></span>
+          <strong><%= t('about.feature_2_label') %></strong>
         </div>
         <div class="about-feature">
-          <strong>👨‍🍳</strong>
-          <span>Tout est<br/>fait maison</span>
+          <span><%= t('about.feature_3_text') %></span>
+          <strong><%= t('about.feature_3_label') %></strong>
         </div>
         <div class="about-feature">
-          <strong>🌱</strong>
-          <span>Options<br/>végétariennes</span>
+          <span><%= t('about.feature_4_text') %></span>
+          <strong><%= t('about.feature_4_label') %></strong>
         </div>
       </div>
     </div>
@@ -132,32 +130,49 @@
         <img src="<%= featured[1].image_path %>" alt="" />
       <% } else { %>
         <div class="about-visual-placeholder">
-          <span class="about-visual-emoji">🥖</span>
+          <span class="about-visual-emoji">— la maison —</span>
         </div>
       <% } %>
     </div>
   </div>
 </section>
 
-<!-- ─── COUPS DE CŒUR (featured) ───────────────────────────────────────── -->
+<!-- ─── PULL QUOTE — atmosphérique ─────────────────────────────────────── -->
+<section class="pull-quote">
+  <div class="pull-quote-inner">
+    <span class="pull-quote-mark" aria-hidden="true">"</span>
+    <p class="pull-quote-text reveal">
+      <%= lang === 'en'
+        ? 'The kitchen, when it is just, holds to very little — a product, a gesture, a moment.'
+        : (lang === 'it'
+          ? 'La cucina, quando è giusta, tiene a poco — un prodotto, un gesto, un istante.'
+          : 'La cuisine, quand elle est juste, tient à peu — un produit, un geste, un instant.') %>
+    </p>
+    <span class="pull-quote-attr">— Damien Chocano</span>
+  </div>
+</section>
+
+<!-- ─── SIGNATURES DU CHEF (featured) ──────────────────────────────────── -->
 <% if (featured && featured.length) { %>
 <section class="featured">
   <div class="featured-header reveal">
-    <span class="eyebrow"><%= t('menu.featured') %></span>
-    <h2 class="section-title">Nos incontournables</h2>
+    <span class="chapter-num">III. Chapitre</span>
+    <span class="eyebrow eyebrow--ornate"><%= t('menu.featured') %></span>
+    <h2 class="section-title"><em><%= t('featured.title') %></em></h2>
   </div>
 
   <div class="featured-grid">
     <% featured.slice(0, 3).forEach(function(item, idx) { %>
-      <article class="featured-card reveal" style="--delay: <%= idx * 0.1 %>s">
+      <article class="featured-card reveal" style="--delay: <%= idx * 0.12 %>s">
+        <span class="featured-card-num"><%= ['N° I', 'N° II', 'N° III'][idx] || ('N° ' + (idx+1)) %></span>
         <div class="featured-card-image">
           <% if (item.image_path) { %>
             <img src="<%= item.image_path %>" alt="<%= tr({ fr: item.name_fr, en: item.name_en, it: item.name_it }) %>" loading="lazy" />
           <% } else { %>
-            <div class="featured-card-placeholder">🍔</div>
+            <div class="featured-card-placeholder">✦</div>
           <% } %>
           <% if (item.is_veggie) { %>
-            <span class="badge-veggie" title="<%= t('menu.veggie') %>">🌱 <%= t('menu.veggie') %></span>
+            <span class="badge-veggie"><%= t('menu.veggie') %></span>
           <% } %>
         </div>
         <div class="featured-card-body">
@@ -176,7 +191,7 @@
   </div>
 
   <div class="featured-cta reveal">
-    <a href="/menu" class="btn btn-outline">
+    <a href="/menu" class="btn btn-outline btn-lg">
       <span><%= t('hero.cta_menu') %></span>
       <span class="btn-arrow" aria-hidden="true">→</span>
     </a>
@@ -184,17 +199,25 @@
 </section>
 <% } %>
 
+<!-- ─── ORNEMENT ─────────────────────────────────────────────────────────── -->
+<div class="section-divider section-divider--paper">
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-diamond"></span>
+  </div>
+</div>
+
 <!-- ─── GALERIE PREVIEW ────────────────────────────────────────────────── -->
 <% if (gallery && gallery.length) { %>
 <section class="gallery-preview">
   <div class="gallery-preview-header reveal">
+    <span class="chapter-num">IV. Chapitre</span>
     <span class="eyebrow"><%= t('gallery.subtitle') %></span>
-    <h2 class="section-title"><%= t('gallery.title') %></h2>
+    <h2 class="section-title"><em><%= t('gallery.title') %></em></h2>
   </div>
 
   <div class="gallery-preview-grid">
     <% gallery.slice(0, 6).forEach(function(photo, idx) { %>
-      <a href="/galerie" class="gallery-preview-item reveal" style="--delay: <%= idx * 0.05 %>s">
+      <a href="/galerie" class="gallery-preview-item reveal" style="--delay: <%= idx * 0.06 %>s">
         <img src="<%= photo.image_path %>" alt="<%= tr({ fr: photo.caption_fr, en: photo.caption_en, it: photo.caption_it }) || '' %>" loading="lazy" />
       </a>
     <% }) %>
@@ -207,18 +230,19 @@
 <section class="reviews-preview">
   <div class="reviews-preview-inner">
     <div class="reviews-preview-header reveal">
-      <span class="eyebrow">★★★★★ <%= settings.rating_value || '4.8' %>/5</span>
-      <h2 class="section-title"><%= t('reviews.title') %></h2>
+      <span class="chapter-num">V. Chapitre</span>
+      <span class="eyebrow">★ ★ ★ ★ ★ &nbsp;·&nbsp; <%= settings.rating_value || '4.8' %>/5</span>
+      <h2 class="section-title"><em><%= t('reviews.title') %></em></h2>
     </div>
 
     <div class="reviews-preview-grid">
       <% reviews.slice(0, 3).forEach(function(review, idx) { %>
-        <article class="review-card reveal" style="--delay: <%= idx * 0.1 %>s">
+        <article class="review-card reveal" style="--delay: <%= idx * 0.12 %>s">
           <div class="review-card-stars" aria-hidden="true">
             <% for (var i = 0; i < (review.rating || 5); i++) { %>★<% } %>
           </div>
           <p class="review-card-content">
-            « <%= tr({ fr: review.content_fr, en: review.content_en, it: review.content_it }) %> »
+            <%= tr({ fr: review.content_fr, en: review.content_en, it: review.content_it }) %>
           </p>
           <div class="review-card-footer">
             <strong><%= review.author %></strong>
@@ -229,7 +253,7 @@
     </div>
 
     <div class="reviews-preview-cta reveal">
-      <a href="/avis" class="btn btn-outline">
+      <a href="/avis" class="btn btn-outline--gold btn-lg">
         <span><%= t('reviews.see_all') %></span>
         <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
@@ -240,20 +264,25 @@
 
 <!-- ─── CONTACT TEASER ─────────────────────────────────────────────────── -->
 <section class="contact-teaser">
-  <div class="contact-teaser-inner reveal">
-    <div class="contact-teaser-content">
+  <div class="contact-teaser-inner">
+    <div class="contact-teaser-content reveal">
+      <span class="chapter-num">VI. Chapitre</span>
       <span class="eyebrow"><%= t('contact.subtitle') %></span>
-      <h2 class="section-title"><%= t('contact.title') %></h2>
+      <h2 class="section-title"><em><%= t('contact.title') %></em></h2>
+
+      <% if (settings.phone) { %>
+        <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="contact-teaser-phone">
+          <span class="contact-teaser-phone-label"><%= t('nav.reserve') %></span>
+          <span class="contact-teaser-phone-number"><%= settings.phone %></span>
+        </a>
+      <% } %>
+
       <p class="contact-teaser-address">
-        <%= settings.address_street || '17 Avenue Gabriel Péri' %><br/>
+        <%= settings.address_street || '1 rue de l\'Hôpital' %><br/>
         <%= settings.address_postal || '30400' %> <%= settings.address_city || 'Villeneuve-lès-Avignon' %>
       </p>
+
       <div class="contact-teaser-actions">
-        <% if (settings.phone) { %>
-          <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="btn btn-primary">
-            <%= t('contact.call') %> · <%= settings.phone %>
-          </a>
-        <% } %>
         <a href="/contact" class="btn btn-ghost">
           <%= t('nav.contact') %>
           <span class="btn-arrow" aria-hidden="true">→</span>
@@ -262,7 +291,7 @@
     </div>
 
     <% if (settings.geo_lat && settings.geo_lng) { %>
-    <div class="contact-teaser-map">
+    <div class="contact-teaser-map reveal">
       <iframe
         src="https://www.google.com/maps?q=<%= settings.geo_lat %>,<%= settings.geo_lng %>&hl=<%= lang %>&z=15&output=embed"
         loading="lazy"

@@ -1,9 +1,9 @@
 <header class="site-header" data-header>
   <div class="site-header-inner">
-    <a href="/" class="site-brand" aria-label="Street Food Vla — Accueil">
+    <a href="/" class="site-brand" aria-label="<%= settings.restaurant_name || 'L\'Émulsion' %> — Accueil">
       <img src="/images/logo.jpg" alt="" class="site-brand-mark" />
       <span class="site-brand-text">
-        <strong>Street Food</strong>
+        <strong><%= settings.restaurant_name || 'L\'Émulsion' %></strong>
         <em>Villeneuve-lès-Avignon</em>
       </span>
     </a>
@@ -23,9 +23,10 @@
         <% }) %>
       </div>
 
-      <% if (settings && settings.social_ubereats) { %>
-        <a href="<%= settings.social_ubereats %>" target="_blank" rel="noopener" class="btn-order-header">
-          <%= t('nav.order') %>
+      <% if (settings && settings.phone) { %>
+        <a href="tel:<%= settings.phone.replace(/\s/g, '') %>" class="btn-reserve-header">
+          <span class="btn-reserve-header-label"><%= t('nav.reserve') %></span>
+          <span class="btn-reserve-header-phone"><%= settings.phone %></span>
         </a>
       <% } %>
 

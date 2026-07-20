@@ -5,38 +5,53 @@
   },
   "nav": {
     "home": "Accueil",
-    "menu": "Notre carte",
+    "menu": "La carte",
     "about": "Notre histoire",
     "gallery": "Galerie",
     "reviews": "Avis",
     "contact": "Contact",
-    "order": "Commander"
+    "reserve": "Réserver",
+    "reserve_online": "Réservation en ligne"
   },
   "hero": {
-    "subtitle": "Smash burgers · Tacos · Spécialité provençale",
+    "subtitle": "Bistronomie · Produits du marché · Villeneuve-lès-Avignon",
     "cta_menu": "Voir la carte",
-    "cta_order": "Commander sur Uber Eats",
-    "rating_label": "{stars}/5 · {count} avis Google"
+    "rating_label": "{stars}/5 · {count} avis"
   },
   "about": {
-    "title": "Le goût du fait maison",
-    "subtitle": "Notre philosophie"
+    "title": "La cuisine, comme une émulsion",
+    "subtitle": "L'esprit de la maison",
+    "feature_1_label": "01 · Marché",
+    "feature_1_text": "95 % de produits locaux",
+    "feature_2_label": "02 · Carte du jour",
+    "feature_2_text": "Composée chaque matin",
+    "feature_3_label": "03 · Sur mesure",
+    "feature_3_text": "Cuissons basse T° & minute",
+    "feature_4_label": "04 · Cadre",
+    "feature_4_text": "Voûte du XVIIᵉ, face à la Collégiale"
+  },
+  "featured": {
+    "title": "Signatures de la carte"
   },
   "menu": {
     "title": "La carte",
-    "subtitle": "Tout est préparé maison, avec des produits frais et locaux",
-    "veggie": "Végé",
-    "featured": "Coup de cœur",
+    "subtitle": "Composée au marché, chaque matin",
+    "lede": "Notre carte évolue au fil du marché et des saisons. Voici un aperçu de ce que le chef aime servir — la carte réelle du jour vous sera présentée à table.",
+    "veggie": "Végétarien",
+    "featured": "Signature",
     "from": "à partir de"
   },
   "gallery": {
     "title": "Galerie",
-    "subtitle": "Un aperçu de la maison"
+    "subtitle": "Un aperçu de la maison",
+    "empty": "La galerie est en préparation."
   },
   "reviews": {
-    "title": "Ils en parlent",
-    "subtitle": "{rating}/5 sur Google · {count} avis",
-    "see_all": "Voir tous les avis"
+    "title": "Ce qu'on en dit",
+    "subtitle": "{rating}/5 sur TripAdvisor & Google · {count} avis",
+    "see_all": "Voir tous les avis",
+    "see_google": "Voir tous les avis sur Google",
+    "empty": "Pas d'avis pour le moment."
   },
   "contact": {
     "title": "Nous trouver",
@@ -45,21 +60,41 @@
     "phone": "Téléphone",
     "email": "Email",
     "hours": "Horaires",
-    "open_now": "Ouvert maintenant",
+    "open_now": "Ouvert",
     "closed_now": "Fermé",
     "lunch": "Midi",
     "dinner": "Soir",
     "closed": "Fermé",
-    "follow_us": "Suivez-nous",
+    "follow_us": "Nous suivre",
     "directions": "Itinéraire",
     "call": "Appeler",
-    "send_email": "Envoyer un email"
+    "send_email": "Envoyer un email",
+    "book_online": "Réserver une table en ligne",
+    "tap_to_call": "Appeler pour réserver",
+    "via": "via"
   },
   "footer": {
-    "tagline": "Smash burgers gourmets · Villeneuve-lès-Avignon",
-    "made_with": "Conçu avec passion",
+    "tagline": "Bistronomie française · Villeneuve-lès-Avignon",
+    "made_with": "Conçu avec soin",
     "legal": "Mentions légales",
     "rights": "Tous droits réservés"
+  },
+  "error": {
+    "404_title": "Cette page s'est perdue en cuisine",
+    "404_text": "La page que vous cherchez n'existe pas. Mais la carte, elle, est bien là.",
+    "500_title": "Un grain de sable dans le service",
+    "500_text": "Une erreur est survenue. On s'en occupe — réessayez dans un instant."
+  },
+  "legal": {
+    "editor": "Éditeur du site",
+    "hosting": "Hébergement",
+    "hosting_todo": "À renseigner par l'éditeur.",
+    "ip": "Propriété intellectuelle",
+    "ip_text": "L'ensemble des éléments présents sur ce site (textes, photographies, logo, contenus) est protégé par le droit d'auteur. Toute reproduction, totale ou partielle, est interdite sans autorisation écrite préalable.",
+    "data": "Données personnelles",
+    "data_text": "Ce site n'utilise aucun cookie de suivi ni de profilage. Un cookie technique est utilisé pour la session administrateur, et un cookie pour la préférence de langue. Aucune donnée personnelle n'est collectée auprès des visiteurs.",
+    "credits": "Crédits",
+    "credits_text": "Site conçu et développé sur mesure."
   },
   "admin": {
     "login": "Connexion",

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 24" role="img" aria-hidden="true">
+  <line x1="0" y1="12" x2="80" y2="12" stroke="#b8945a" stroke-width="0.6"/>
+  <line x1="120" y1="12" x2="200" y2="12" stroke="#b8945a" stroke-width="0.6"/>
+  <g transform="translate(100,12)" fill="none" stroke="#b8945a" stroke-width="0.9">
+    <polygon points="0,-6 5,0 0,6 -5,0"/>
+    <polygon points="0,-10 8,0 0,10 -8,0" opacity="0.45"/>
+  </g>
+</svg>
