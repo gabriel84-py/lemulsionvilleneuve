@@ -18,7 +18,7 @@ const adminAuthRoutes = require('./routes/admin-auth');
 const adminRoutes = require('./routes/admin');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5678;
 const isProd = process.env.NODE_ENV === 'production';
 
 // Trust proxy (Nginx en amont). NB : on fait confiance UNIQUEMENT au premier
