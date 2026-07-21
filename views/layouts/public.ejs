@@ -57,19 +57,12 @@
   }
   </script>
 </head>
-<body data-page="<%= page %>">
-
-  <%- include('../partials/announcement-bar') %>
-  <%- include('../partials/header') %>
-  <%- include('../partials/mobile-drawer') %>
-
-  <main id="main">
-    <%- body %>
-  </main>
-
-  <%- include('../partials/footer') %>
-  <%- include('../partials/floating-order') %>
-
-  <script src="/js/public.js" defer></script>
-</body>
+<body data-page="<%= page %>"
+><%- include('../partials/announcement-bar') -%>
+<%- include('../partials/header') -%>
+<%- include('../partials/mobile-drawer') -%>
+<main id="main"><%- body -%></main
+><%- include('../partials/footer') -%>
+<%- include('../partials/floating-order') -%>
+<script src="/js/public.js" defer></script></body>
 </html>

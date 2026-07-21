@@ -75,8 +75,11 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
+  /* font-size: 0 + line-height: 0 sur le body neutralise les text-nodes vides
+     (whitespace pur entre les tags/includes) qui créeraient sinon une bande
+     visible en haut de page. Les enfants directs restaurent les valeurs. */
+  font-size: 0;
+  line-height: 0;
   color: var(--ink);
   background: var(--cream);
   font-feature-settings: 'kern', 'liga', 'calt';
@@ -85,6 +88,10 @@ body {
   text-rendering: optimizeLegibility;
   padding-bottom: calc(var(--bottombar-h) + var(--safe-bottom));
   overscroll-behavior-y: none;
+}
+body > * {
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 img, svg { display: block; max-width: 100%; height: auto; }
@@ -418,9 +425,19 @@ em, .italic {
 }
 .site-header.is-hidden { transform: translateY(-100%); }
 
-/* Header au-dessus du hero foncé : quand pas encore scrollé, on le fond
-   totalement dans le hero (transparent, sans backdrop-filter) pour éviter
-   la double-couche qui créait un dégradé visible. */
+/* Sur la home, le header est TOUJOURS en position:fixed (hors flux). Ça évite
+   le décalage entre --header-h (valeur souhaitée) et la hauteur réelle du
+   header — décalage qui créait une bande claire visible en haut, entre le
+   body crème et le hero. Le hero commence naturellement à Y=0 sous le header. */
+body[data-page="home"] .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+/* Quand pas encore scrollé sur home, on fond totalement le header dans le
+   hero (transparent, sans backdrop-filter) pour éviter la double-couche
+   qui créait un dégradé visible. */
 body[data-page="home"] .site-header:not(.is-scrolled) {
   background: transparent;
   -webkit-backdrop-filter: none;
@@ -667,7 +684,10 @@ body.is-drawer-open .site-burger span { background: var(--cream); }
   position: relative;
   min-height: min(100vh, 900px);
   min-height: min(100dvh, 900px);
-  margin-top: calc(var(--header-h) * -1);
+  /* Pas de margin-top negatif : sur home, le header est en position:fixed
+     (hors flux), le hero commence donc naturellement à Y=0. Le padding-top
+     laisse la place au contenu pour ne pas être caché par le header. */
+  margin-top: 0;
   padding-top: calc(var(--header-h) + var(--safe-top));
   color: var(--cream);
   overflow: hidden;
